@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.PandectbigCustomMonitorIndexDao">
+
+	<resultMap id="PandectbigCustomMonitorIndexMap" type="com.ruirados.pojo.PandectbigCustomMonitorIndex">
+		<id property="id" column="id"/>
+		<result property="companyid" column="companyId"/>
+		<result property="producttype" column="productType"/>
+		<result property="indexs" column="indexs"/>
+		<result property="computerid" column="computerId"/>
+		<result property="diskid" column="diskId"/>
+		<result property="vpcid" column="vpcId"/>
+		<result property="objectstorageid" column="objectStorageId"/>
+		<result property="type" column="type"/>
+		<result property="zoneid" column="zoneId"/>
+		<result property="createtime" column="createTime"/>
+	</resultMap>
+
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.ruirados.pojo.PandectbigCustomMonitorIndex">
+		insert into  pandectbig_custom_monitor_index (companyId,productType,indexs,computerId,diskId,vpcId,objectStorageId,type,zoneId,createTime) values(#{companyid},#{producttype},#{indexs},#{computerid},#{diskid},#{vpcid},#{objectstorageid},#{type},#{zoneid},#{createtime})	
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.PandectbigCustomMonitorIndex">
+		update pandectbig_custom_monitor_index
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="producttype!=null">productType = #{producttype},</if>
+			<if test="indexs!=null">indexs = #{indexs},</if>
+			<if test="computerid!=null">computerId = #{computerid},</if>
+			<if test="diskid!=null">diskId = #{diskid},</if>
+			<if test="vpcid!=null">vpcId = #{vpcid},</if>
+			<if test="objectstorageid!=null">objectStorageId = #{objectstorageid},</if>
+			<if test="type!=null">type = #{type},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="createtime!=null">createTime = #{createtime}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.PandectbigCustomMonitorIndex">
+		delete from pandectbig_custom_monitor_index where 1=1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="producttype != null"> and productType = #{producttype}</if>
+			<if test="indexs != null"> and indexs = #{indexs}</if>
+			<if test="computerid != null"> and computerId = #{computerid}</if>
+			<if test="diskid != null"> and diskId = #{diskid}</if>
+			<if test="vpcid != null"> and vpcId = #{vpcid}</if>
+			<if test="objectstorageid != null"> and objectStorageId = #{objectstorageid}</if>
+			<if test="type != null"> and type = #{type}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+	</delete>
+
+	<select id="select" resultMap="PandectbigCustomMonitorIndexMap" parameterType="com.ruirados.pojo.PandectbigCustomMonitorIndex">
+		select * from pandectbig_custom_monitor_index where 1 = 1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="producttype != null"> and productType = #{producttype}</if>
+			<if test="indexs != null"> and indexs = #{indexs}</if>
+			<if test="computerid != null"> and computerId = #{computerid}</if>
+			<if test="diskid != null"> and diskId = #{diskid}</if>
+			<if test="vpcid != null"> and vpcId = #{vpcid}</if>
+			<if test="objectstorageid != null"> and objectStorageId = #{objectstorageid}</if>
+			<if test="type != null"> and type = #{type}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="PandectbigCustomMonitorIndexMap" parameterType="java.util.Map">
+		select  <if test="field != null and field != ''"> ${field}</if>  <if test="field == null or field == ''"> * </if>     from pandectbig_custom_monitor_index <if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from pandectbig_custom_monitor_index  <if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update pandectbig_custom_monitor_index set ${param}</if>
+	</update>
+
+</mapper>

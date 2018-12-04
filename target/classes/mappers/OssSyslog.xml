@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssSyslogDao">
+
+	<resultMap id="OssSyslogMap" type="com.ruirados.pojo.OssSyslog">
+		<id property="id" column="id" />
+		<result property="classname" column="className" />
+		<result property="method" column="method" />
+		<result property="createtime" column="createtime" />
+		<result property="loglevel" column="loglevel" />
+		<result property="msg" column="msg" />
+		<result property="status" column="status" />
+		<result property="operatorip" column="operatorIP" />
+		<result property="operator" column="operator" />
+		<result property="zoneid" column="zoneId" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssSyslog">
+		insert into oss_syslog
+		(className,method,createtime,loglevel,msg,status,operatorIP,operator,zoneId,remark)
+		values(#{classname},#{method},#{createtime},#{loglevel},#{msg},#{status},#{operatorip},#{operator},#{zoneid},#{remark})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssSyslog">
+		update oss_syslog
+		<set>
+			<if test="classname!=null">className = #{classname},</if>
+			<if test="method!=null">method = #{method},</if>
+			<if test="createtime!=null">createtime = #{createtime},</if>
+			<if test="loglevel!=null">loglevel = #{loglevel},</if>
+			<if test="msg!=null">msg = #{msg},</if>
+			<if test="status!=null">status = #{status},</if>
+			<if test="operatorip!=null">operatorIP = #{operatorip},</if>
+			<if test="operator!=null">operator = #{operator},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssSyslog">
+		delete from oss_syslog where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="classname != null"> and className = #{classname}</if>
+		<if test="method != null"> and method = #{method}</if>
+		<if test="createtime != null"> and createtime = #{createtime}</if>
+		<if test="loglevel != null"> and loglevel = #{loglevel}</if>
+		<if test="msg != null"> and msg = #{msg}</if>
+		<if test="status != null"> and status = #{status}</if>
+		<if test="operatorip != null"> and operatorIP = #{operatorip}</if>
+		<if test="operator != null"> and operator = #{operator}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="OssSyslogMap" parameterType="com.ruirados.pojo.OssSyslog">
+		select * from oss_syslog where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="classname != null"> and className = #{classname}</if>
+		<if test="method != null"> and method = #{method}</if>
+		<if test="createtime != null"> and createtime = #{createtime}</if>
+		<if test="loglevel != null"> and loglevel = #{loglevel}</if>
+		<if test="msg != null"> and msg = #{msg}</if>
+		<if test="status != null"> and status = #{status}</if>
+		<if test="operatorip != null"> and operatorIP = #{operatorip}</if>
+		<if test="operator != null"> and operator = #{operator}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssSyslogMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_syslog
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_syslog
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_syslog set ${param}</if>
+	</update>
+
+</mapper>

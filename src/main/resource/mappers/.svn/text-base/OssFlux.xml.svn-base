@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssFluxDao">
+
+	<resultMap id="OssFluxMap" type="com.ruirados.pojo.OssFlux">
+		<id property="id" column="id"/>
+		<result property="companyid" column="companyId"/>
+		<result property="name" column="name"/>
+		<result property="size" column="size"/>
+		<result property="price" column="price"/>
+		<result property="originprice" column="originPrice"/>
+		<result property="realprice" column="realPrice"/>
+		<result property="expiredays" column="expireDays"/>
+		<result property="timetype" column="timeType"/>
+		<result property="expiretime" column="expireTime"/>
+		<result property="createtime" column="createTime"/>
+		<result property="zoneid" column="zoneId"/>
+		<result property="type" column="type"/>
+		<result property="status" column="status"/>
+	</resultMap>
+
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.ruirados.pojo.OssFlux">
+		insert into  oss_flux (companyId,name,size,price,originPrice,realPrice,expireDays,timeType,expireTime,createTime,zoneId,type,status) values(#{companyid},#{name},#{size},#{price},#{originprice},#{realprice},#{expiredays},#{timetype},#{expiretime},#{createtime},#{zoneid},#{type},#{status})	
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssFlux">
+		update oss_flux
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="name!=null">name = #{name},</if>
+			<if test="size!=null">size = #{size},</if>
+			<if test="price!=null">price = #{price},</if>
+			<if test="originprice!=null">originPrice = #{originprice},</if>
+			<if test="realprice!=null">realPrice = #{realprice},</if>
+			<if test="expiredays!=null">expireDays = #{expiredays},</if>
+			<if test="timetype!=null">timeType = #{timetype},</if>
+			<if test="expiretime!=null">expireTime = #{expiretime},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="type!=null">type = #{type},</if>
+			<if test="status!=null">status = #{status}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssFlux">
+		delete from oss_flux where 1=1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="name != null"> and name = #{name}</if>
+			<if test="size != null"> and size = #{size}</if>
+			<if test="price != null"> and price = #{price}</if>
+			<if test="originprice != null"> and originPrice = #{originprice}</if>
+			<if test="realprice != null"> and realPrice = #{realprice}</if>
+			<if test="expiredays != null"> and expireDays = #{expiredays}</if>
+			<if test="timetype != null"> and timeType = #{timetype}</if>
+			<if test="expiretime != null"> and expireTime = #{expiretime}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="type != null"> and type = #{type}</if>
+			<if test="status != null"> and status = #{status}</if>
+	</delete>
+
+	<select id="select" resultMap="OssFluxMap" parameterType="com.ruirados.pojo.OssFlux">
+		select * from oss_flux where 1 = 1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="name != null"> and name = #{name}</if>
+			<if test="size != null"> and size = #{size}</if>
+			<if test="price != null"> and price = #{price}</if>
+			<if test="originprice != null"> and originPrice = #{originprice}</if>
+			<if test="realprice != null"> and realPrice = #{realprice}</if>
+			<if test="expiredays != null"> and expireDays = #{expiredays}</if>
+			<if test="timetype != null"> and timeType = #{timetype}</if>
+			<if test="expiretime != null"> and expireTime = #{expiretime}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="type != null"> and type = #{type}</if>
+			<if test="status != null"> and status = #{status}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssFluxMap" parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_flux
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_flux
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_flux set ${param}</if>
+	</update>
+
+</mapper>

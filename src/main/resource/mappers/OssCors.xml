@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssCorsDao">
+
+	<resultMap id="OssCorsMap" type="com.ruirados.pojo.OssCors">
+		<id property="id" column="id" />
+		<result property="code" column="code" />
+		<result property="bucketid" column="bucketid" />
+		<result property="corsid" column="corsid" />
+		<result property="orgins" column="orgins" />
+		<result property="methods" column="methods" />
+		<result property="allowsheaders" column="allowsHeaders" />
+		<result property="exposeheaders" column="ExposeHeaders" />
+		<result property="maxage" column="maxAge" />
+		<result property="version" column="version" />
+		<result property="isdisplay" column="isDisplay" />
+		<result property="state" column="state" />
+		<result property="createtime" column="createTime" />
+		<result property="lasttime" column="lastTime" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssCors">
+		insert into oss_cors
+		(code,bucketid,corsid,orgins,methods,allowsHeaders,ExposeHeaders,maxAge,version,isDisplay,state,createTime,lastTime,remark)
+		values(#{code},#{bucketid},#{corsid},#{orgins},#{methods},#{allowsheaders},#{exposeheaders},#{maxage},#{version},#{isdisplay},#{state},#{createtime},#{lasttime},#{remark})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssCors">
+		update oss_cors
+		<set>
+			<if test="code!=null">code = #{code},</if>
+			<if test="bucketid!=null">bucketid = #{bucketid},</if>
+			<if test="orgins!=null">orgins = #{orgins},</if>
+			<if test="methods!=null">methods = #{methods},</if>
+			<if test="allowsheaders!=null">allowsHeaders = #{allowsheaders},</if>
+			<if test="exposeheaders!=null">ExposeHeaders = #{exposeheaders},</if>
+			<if test="maxage!=null">maxAge = #{maxage},</if>
+			<if test="version!=null">version = #{version},</if>
+			<if test="isdisplay!=null">isDisplay = #{isdisplay},</if>
+			<if test="state!=null">state = #{state},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="lasttime!=null">lastTime = #{lasttime},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		<if test="corsid!=null">where corsid = #{corsid}</if>
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssCors">
+		delete from oss_cors where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="bucketid != null"> and bucketid = #{bucketid}</if>
+		<if test="corsid != null"> and corsid = #{corsid}</if>
+		<if test="orgins != null"> and orgins = #{orgins}</if>
+		<if test="methods != null"> and methods = #{methods}</if>
+		<if test="allowsheaders != null"> and allowsHeaders = #{allowsheaders}</if>
+		<if test="exposeheaders != null"> and ExposeHeaders = #{exposeheaders}</if>
+		<if test="maxage != null"> and maxAge = #{maxage}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="OssCorsMap" parameterType="com.ruirados.pojo.OssCors">
+		select * from oss_cors where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="bucketid != null"> and bucketid = #{bucketid}</if>
+		<if test="corsid != null"> and corsid = #{corsid}</if>
+		<if test="orgins != null"> and orgins = #{orgins}</if>
+		<if test="methods != null"> and methods = #{methods}</if>
+		<if test="allowsheaders != null"> and allowsHeaders = #{allowsheaders}</if>
+		<if test="exposeheaders != null"> and ExposeHeaders = #{exposeheaders}</if>
+		<if test="maxage != null"> and maxAge = #{maxage}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssCorsMap" parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_cors
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_cors
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_cors set ${param}</if>
+	</update>
+
+</mapper>

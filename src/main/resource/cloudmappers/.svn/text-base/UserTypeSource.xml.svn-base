@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.UserTypeSourceDao">
+
+	<resultMap id="UserTypeSourceMap" type="com.ruirados.pojo.UserTypeSource">
+		<id property="id" column="id" />
+		<result property="companyid" column="companyId" />
+		<result property="createtime" column="createTime" />
+		<result property="maxcomputer" column="maxComputer" />
+		<result property="maxdisk" column="maxDisk" />
+		<result property="maxpublicip" column="maxPublicIp" />
+		<result property="maxloanbanlance" column="maxLoanbanlance" />
+		<result property="maxsnapshot" column="maxSnapshot" />
+		<result property="maxvmsnapshot" column="maxVMSnapshot" />
+		<result property="maxbaremetalserver" column="maxBareMetalServer" />
+		<result property="maxrubbersheeting" column="maxRubberSheeting" />
+		<result property="maxnatgetway" column="maxNatGetway" />
+		<result property="maxvpn" column="maxVPN" />
+		<result property="maxcdn" column="maxCDN" />
+		<result property="maxddoshighprotectionip" column="maxDDOSHighProtectionIP" />
+		<result property="maxfirewall" column="maxFirewall" />
+		<result property="maxtemplate" column="maxTemplate" />
+		<result property="maxdisktemplate" column="maxDiskTemplate" />
+		<result property="maxvpc" column="maxVpc" />
+		<result property="maxipsegment" column="maxIpsegment" />
+		<result property="maxcontact" column="maxContact" />
+		<result property="maxossbucket" column="maxOssBucket" />
+		<result property="maxossstore" column="maxOssStore" />
+		<result property="maxossaccesskey" column="maxOssAccessKey" />
+		<result property="maxOssFreeFlux" column="maxOssFreeFlux" />
+		<result property="usertype" column="userType" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.UserTypeSource">
+		insert into user_type_source
+		(companyId,createTime,maxComputer,maxDisk,maxPublicIp,maxLoanbanlance,maxSnapshot,maxVMSnapshot,maxBareMetalServer,maxRubberSheeting,maxNatGetway,maxVPN,maxCDN,maxDDOSHighProtectionIP,maxFirewall,maxTemplate,maxDiskTemplate,maxVpc,maxIpsegment,maxContact,maxOssBucket,maxOssStore,maxOssAccessKey,maxOssFreeFlux,userType)
+		values(#{companyid},#{createtime},#{maxcomputer},#{maxdisk},#{maxpublicip},#{maxloanbanlance},#{maxsnapshot},#{maxvmsnapshot},#{maxbaremetalserver},#{maxrubbersheeting},#{maxnatgetway},#{maxvpn},#{maxcdn},#{maxddoshighprotectionip},#{maxfirewall},#{maxtemplate},#{maxdisktemplate},#{maxvpc},#{maxipsegment},#{maxcontact},#{maxossbucket},#{maxossstore},#{maxossaccesskey},#{maxOssFreeFlux},#{usertype})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.UserTypeSource">
+		update user_type_source
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="maxcomputer!=null">maxComputer = #{maxcomputer},</if>
+			<if test="maxdisk!=null">maxDisk = #{maxdisk},</if>
+			<if test="maxpublicip!=null">maxPublicIp = #{maxpublicip},</if>
+			<if test="maxloanbanlance!=null">maxLoanbanlance = #{maxloanbanlance},</if>
+			<if test="maxsnapshot!=null">maxSnapshot = #{maxsnapshot},</if>
+			<if test="maxvmsnapshot!=null">maxVMSnapshot = #{maxvmsnapshot},</if>
+			<if test="maxbaremetalserver!=null">maxBareMetalServer = #{maxbaremetalserver},</if>
+			<if test="maxrubbersheeting!=null">maxRubberSheeting = #{maxrubbersheeting},</if>
+			<if test="maxnatgetway!=null">maxNatGetway = #{maxnatgetway},</if>
+			<if test="maxvpn!=null">maxVPN = #{maxvpn},</if>
+			<if test="maxcdn!=null">maxCDN = #{maxcdn},</if>
+			<if test="maxddoshighprotectionip!=null">maxDDOSHighProtectionIP = #{maxddoshighprotectionip},</if>
+			<if test="maxfirewall!=null">maxFirewall = #{maxfirewall},</if>
+			<if test="maxtemplate!=null">maxTemplate = #{maxtemplate},</if>
+			<if test="maxdisktemplate!=null">maxDiskTemplate = #{maxdisktemplate},</if>
+			<if test="maxvpc!=null">maxVpc = #{maxvpc},</if>
+			<if test="maxipsegment!=null">maxIpsegment = #{maxipsegment},</if>
+			<if test="maxcontact!=null">maxContact = #{maxcontact},</if>
+			<if test="maxossbucket!=null">maxOssBucket = #{maxossbucket},</if>
+			<if test="maxossstore!=null">maxOssStore = #{maxossstore},</if>
+			<if test="maxossaccesskey!=null">maxOssAccessKey = #{maxossaccesskey},</if>
+			<if test="maxOssFreeFlux!=null">maxOssFreeFlux = #{maxOssFreeFlux},</if>
+			<if test="usertype!=null">userType = #{usertype}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.UserTypeSource">
+		delete from user_type_source where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="maxcomputer != null"> and maxComputer = #{maxcomputer}</if>
+		<if test="maxdisk != null"> and maxDisk = #{maxdisk}</if>
+		<if test="maxpublicip != null"> and maxPublicIp = #{maxpublicip}</if>
+		<if test="maxloanbanlance != null"> and maxLoanbanlance = #{maxloanbanlance}</if>
+		<if test="maxsnapshot != null"> and maxSnapshot = #{maxsnapshot}</if>
+		<if test="maxvmsnapshot != null"> and maxVMSnapshot = #{maxvmsnapshot}</if>
+		<if test="maxbaremetalserver != null"> and maxBareMetalServer = #{maxbaremetalserver}</if>
+		<if test="maxrubbersheeting != null"> and maxRubberSheeting = #{maxrubbersheeting}</if>
+		<if test="maxnatgetway != null"> and maxNatGetway = #{maxnatgetway}</if>
+		<if test="maxvpn != null"> and maxVPN = #{maxvpn}</if>
+		<if test="maxcdn != null"> and maxCDN = #{maxcdn}</if>
+		<if test="maxddoshighprotectionip != null"> and maxDDOSHighProtectionIP = #{maxddoshighprotectionip}
+		</if>
+		<if test="maxfirewall != null"> and maxFirewall = #{maxfirewall}</if>
+		<if test="maxtemplate != null"> and maxTemplate = #{maxtemplate}</if>
+		<if test="maxdisktemplate != null"> and maxDiskTemplate = #{maxdisktemplate}</if>
+		<if test="maxvpc != null"> and maxVpc = #{maxvpc}</if>
+		<if test="maxipsegment != null"> and maxIpsegment = #{maxipsegment}</if>
+		<if test="maxcontact != null"> and maxContact = #{maxcontact}</if>
+		<if test="maxossbucket != null"> and maxOssBucket = #{maxossbucket}</if>
+		<if test="maxossstore != null"> and maxOssStore = #{maxossstore}</if>
+		<if test="maxossaccesskey != null"> and maxOssAccessKey = #{maxossaccesskey}</if>
+		<if test="maxOssFreeFlux!=null"> and maxOssFreeFlux = #{maxOssFreeFlux}</if>
+		<if test="usertype != null"> and userType = #{usertype}</if>
+	</delete>
+
+	<select id="select" resultMap="UserTypeSourceMap" parameterType="com.ruirados.pojo.UserTypeSource">
+		select * from user_type_source where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="maxcomputer != null"> and maxComputer = #{maxcomputer}</if>
+		<if test="maxdisk != null"> and maxDisk = #{maxdisk}</if>
+		<if test="maxpublicip != null"> and maxPublicIp = #{maxpublicip}</if>
+		<if test="maxloanbanlance != null"> and maxLoanbanlance = #{maxloanbanlance}</if>
+		<if test="maxsnapshot != null"> and maxSnapshot = #{maxsnapshot}</if>
+		<if test="maxvmsnapshot != null"> and maxVMSnapshot = #{maxvmsnapshot}</if>
+		<if test="maxbaremetalserver != null"> and maxBareMetalServer = #{maxbaremetalserver}</if>
+		<if test="maxrubbersheeting != null"> and maxRubberSheeting = #{maxrubbersheeting}</if>
+		<if test="maxnatgetway != null"> and maxNatGetway = #{maxnatgetway}</if>
+		<if test="maxvpn != null"> and maxVPN = #{maxvpn}</if>
+		<if test="maxcdn != null"> and maxCDN = #{maxcdn}</if>
+		<if test="maxddoshighprotectionip != null"> and maxDDOSHighProtectionIP = #{maxddoshighprotectionip}
+		</if>
+		<if test="maxfirewall != null"> and maxFirewall = #{maxfirewall}</if>
+		<if test="maxtemplate != null"> and maxTemplate = #{maxtemplate}</if>
+		<if test="maxdisktemplate != null"> and maxDiskTemplate = #{maxdisktemplate}</if>
+		<if test="maxvpc != null"> and maxVpc = #{maxvpc}</if>
+		<if test="maxipsegment != null"> and maxIpsegment = #{maxipsegment}</if>
+		<if test="maxcontact != null"> and maxContact = #{maxcontact}</if>
+		<if test="maxossbucket != null"> and maxOssBucket = #{maxossbucket}</if>
+		<if test="maxossstore != null"> and maxOssStore = #{maxossstore}</if>
+		<if test="maxossaccesskey != null"> and maxOssAccessKey = #{maxossaccesskey}</if>
+		<if test="maxOssFreeFlux!=null"> and maxOssFreeFlux = #{maxOssFreeFlux}</if>
+		<if test="usertype != null"> and userType = #{usertype}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="UserTypeSourceMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from user_type_source
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from user_type_source
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update user_type_source set ${param}</if>
+	</update>
+
+</mapper>

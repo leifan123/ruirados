@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.GetfreevminformationDao">
+
+	<resultMap id="GetfreevminformationMap" type="com.yunrui.pojo.Getfreevminformation">
+		<id property="id" column="id" />
+		<result property="createtime" column="createTime" />
+		<result property="companyid" column="companyId" />
+		<result property="companyname" column="companyName" />
+		<result property="companytype" column="companyType" />
+		<result property="computerid" column="computerId" />
+		<result property="computername" column="computerName" />
+		<result property="computerinstancename" column="computerInstanceName" />
+		<result property="activitynum" column="activityNum" />
+		<result property="costflag" column="costFlag" />
+		<result property="vmconfigid" column="VMConfigId" />
+		<result property="phone" column="phone" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.yunrui.pojo.Getfreevminformation">
+		insert into getfreevminformation
+		(createTime,companyId,companyName,companyType,computerId,computerName,computerInstanceName,activityNum,costFlag,VMConfigId,phone)
+		values(#{createtime},#{companyid},#{companyname},#{companytype},#{computerid},#{computername},#{computerinstancename},#{activitynum},#{costflag},#{vmconfigid},#{phone})
+	</insert>
+
+	<update id="update" parameterType="com.yunrui.pojo.Getfreevminformation">
+		update getfreevminformation
+		<set>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="companyname!=null">companyName = #{companyname},</if>
+			<if test="companytype!=null">companyType = #{companytype},</if>
+			<if test="computerid!=null">computerId = #{computerid},</if>
+			<if test="computername!=null">computerName = #{computername},</if>
+			<if test="computerinstancename!=null">computerInstanceName = #{computerinstancename},</if>
+			<if test="activitynum!=null">activityNum = #{activitynum},</if>
+			<if test="costflag!=null">costFlag = #{costflag},</if>
+			<if test="vmconfigid!=null">VMConfigId = #{vmconfigid},</if>
+			<if test="phone!=null">phone = #{phone}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.yunrui.pojo.Getfreevminformation">
+		delete from getfreevminformation where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="companyname != null"> and companyName = #{companyname}</if>
+		<if test="companytype != null"> and companyType = #{companytype}</if>
+		<if test="computerid != null"> and computerId = #{computerid}</if>
+		<if test="computername != null"> and computerName = #{computername}</if>
+		<if test="computerinstancename != null"> and computerInstanceName = #{computerinstancename}</if>
+		<if test="activitynum != null"> and activityNum = #{activitynum}</if>
+		<if test="costflag != null"> and costFlag = #{costflag}</if>
+		<if test="vmconfigid != null"> and VMConfigId = #{vmconfigid}</if>
+		<if test="phone != null"> and phone = #{phone}</if>
+	</delete>
+
+	<select id="select" resultMap="GetfreevminformationMap"
+		parameterType="com.yunrui.pojo.Getfreevminformation">
+		select * from getfreevminformation where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="companyname != null"> and companyName = #{companyname}</if>
+		<if test="companytype != null"> and companyType = #{companytype}</if>
+		<if test="computerid != null"> and computerId = #{computerid}</if>
+		<if test="computername != null"> and computerName = #{computername}</if>
+		<if test="computerinstancename != null"> and computerInstanceName = #{computerinstancename}</if>
+		<if test="activitynum != null"> and activityNum = #{activitynum}</if>
+		<if test="costflag != null"> and costFlag = #{costflag}</if>
+		<if test="vmconfigid != null"> and VMConfigId = #{vmconfigid}</if>
+		<if test="phone != null"> and phone = #{phone}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="GetfreevminformationMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from getfreevminformation
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from getfreevminformation
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update getfreevminformation set ${param}</if>
+	</update>
+	<select id="selectBySql" resultMap="GetfreevminformationMap"
+		parameterType="java.util.Map">
+		${sql}
+	</select>
+</mapper>

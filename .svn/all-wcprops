@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/ruicloud/!svn/ver/3882/trunk/ruirados
+END
+pom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/ruicloud/!svn/ver/3267/trunk/ruirados/pom.xml
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/ruicloud/!svn/ver/2028/trunk/ruirados/.project
+END
+.classpath.bak
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/ruicloud/!svn/ver/2094/trunk/ruirados/.classpath.bak
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/ruicloud/!svn/ver/2094/trunk/ruirados/.classpath
+END

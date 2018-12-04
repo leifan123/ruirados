@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssActivityDao">
+
+	<resultMap id="OssActivityMap" type="com.ruirados.pojo.OssActivity">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="size" column="size"/>
+		<result property="price" column="price"/>
+		<result property="expiredays" column="expireDays"/>
+		<result property="createtime" column="createTime"/>
+		<result property="zoneid" column="zoneId"/>
+		<result property="status" column="status"/>
+	</resultMap>
+
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.ruirados.pojo.OssActivity">
+		insert into  oss_activity (name,size,price,expireDays,createTime,zoneId,status) values(#{name},#{size},#{price},#{expiredays},#{createtime},#{zoneid},#{status})	
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssActivity">
+		update oss_activity
+		<set>
+			<if test="name!=null">name = #{name},</if>
+			<if test="size!=null">size = #{size},</if>
+			<if test="price!=null">price = #{price},</if>
+			<if test="expiredays!=null">expireDays = #{expiredays},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="status!=null">status = #{status}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssActivity">
+		delete from oss_activity where 1=1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="name != null"> and name = #{name}</if>
+			<if test="size != null"> and size = #{size}</if>
+			<if test="price != null"> and price = #{price}</if>
+			<if test="expiredays != null"> and expireDays = #{expiredays}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="status != null"> and status = #{status}</if>
+	</delete>
+
+	<select id="select" resultMap="OssActivityMap" parameterType="com.ruirados.pojo.OssActivity">
+		select * from oss_activity where 1 = 1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="name != null"> and name = #{name}</if>
+			<if test="size != null"> and size = #{size}</if>
+			<if test="price != null"> and price = #{price}</if>
+			<if test="expiredays != null"> and expireDays = #{expiredays}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="status != null"> and status = #{status}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssActivityMap" parameterType="java.util.Map">
+		select  <if test="field != null and field != ''"> ${field}</if>  <if test="field == null or field == ''"> * </if>     from oss_activity <if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_activity  <if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_activity set ${param}</if>
+	</update>
+
+</mapper>

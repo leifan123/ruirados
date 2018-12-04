@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+           http://www.springframework.org/schema/task
+		   http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		   http://www.springframework.org/schema/mvc 
+ 		   http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+ 		   http://www.springframework.org/schema/util
+    	   http://www.springframework.org/schema/util/spring-util-3.0.xsd 
+ 	">
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<mvc:annotation-driven
+		content-negotiation-manager="contentNegotiationManager" />
+	<!-- 以.html为后缀名访问，默认返回数据类型是 text/html， 所以要修改返回的数据类型 -->
+	<!-- 以.html为后缀名访问，默认返回数据类型是 text/html， 所以要修改返回的数据类型 -->
+	<bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<!-- 根据URL中的文件扩展名确定MIME（如userList.xml,userList.json） -->
+		<property name="favorPathExtension" value="true" />
+		<!-- 则根据请求参数的值确定MIME类型，默认的请求参数是format，可以通过parameterName属性指定一个自定义的参数 -->
+		<property name="favorParameter" value="true" />
+		<!-- 则采用Accept请求报文头的值确定MIME类型。由于不同的浏览器产生的Accept头都是不一样的，所以一般不建议采用Accept确定MIME类型 -->
+		<property name="ignoreAcceptHeader" value="true" />
+		<property name="useJaf" value="false" />
+		<property name="defaultContentType" value="text/html" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="do" value="application/json" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- Spring: 配置自动扫描的包 -->
+	<context:component-scan
+		base-package="com.ruirados.filter,com.ruirados.util,com.ruirados.controller,com.ruirados.*" />
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="1073741824" />
+		<property name="maxInMemorySize" value="5000000" />
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+	</bean>
+	<!-- 1.在文件上传解析时发现异常，此时还没有进入到Controller方法中 -->
+	<bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<!-- 遇到MaxUploadSizeExceededException异常时，跳转到error.jsp页面 -->
+				<prop
+					key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error </prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean name="paraMethodResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName">
+			<value>method</value>
+		</property>
+	</bean>
+
+
+	<!-- dao -->
+	<import resource="classpath:spring-dao.xml" />
+
+	<!-- service -->
+	<import resource="classpath:spring-service.xml" />
+
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:redis.properties</value>
+			</list>
+		</property>
+		<property name="fileEncoding" value="UTF-8"></property>
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${yross.jdbc.driverClassName}" />
+		<property name="url" value="${yross.jdbc.url}" />
+		<property name="username" value="${yross.jdbc.username}" />
+		<property name="password" value="${yross.jdbc.password}" />
+		<property name="maxActive" value="20" />
+		<property name="maxIdle" value="5" />
+		<property name="minIdle" value="1" />
+		<property name="maxWait" value="3000" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="minEvictableIdleTimeMillis" value="1800000" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testWhileIdle" value="true" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="180" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+
+	<bean id="bossdataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${boss.jdbc.driverClassName}" />
+		<property name="url" value="${boss.jdbc.url}" />
+		<property name="username" value="${boss.jdbc.username}" />
+		<property name="password" value="${boss.jdbc.password}" />
+		<property name="maxActive" value="20" />
+		<property name="maxIdle" value="5" />
+		<property name="minIdle" value="1" />
+		<property name="maxWait" value="3000" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="minEvictableIdleTimeMillis" value="1800000" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testWhileIdle" value="true" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="180" />
+	</bean>
+
+	<bean id="bosssqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="bossdataSource" />
+		<property name="configLocation" value="classpath:boss-mybatis-config.xml" />
+	</bean>
+
+
+
+	<bean id="clouddataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${cloud.jdbc.driverClassName}" />
+		<property name="url" value="${cloud.jdbc.url}" />
+		<property name="username" value="${cloud.jdbc.username}" />
+		<property name="password" value="${cloud.jdbc.password}" />
+		<property name="maxActive" value="20" />
+		<property name="maxIdle" value="5" />
+		<property name="minIdle" value="1" />
+		<property name="maxWait" value="3000" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="minEvictableIdleTimeMillis" value="1800000" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testWhileIdle" value="true" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="180" />
+	</bean>
+
+	<bean id="cloudsqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="clouddataSource" />
+		<property name="configLocation" value="classpath:cloud-mybatis-config.xml" />
+	</bean>
+	
+	<bean id="testdataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${test.jdbc.driverClassName}" />
+		<property name="url" value="${test.jdbc.url}" />
+		<property name="username" value="${test.jdbc.username}" />
+		<property name="password" value="${test.jdbc.password}" />
+		<property name="maxActive" value="20" />
+		<property name="maxIdle" value="5" />
+		<property name="minIdle" value="1" />
+		<property name="maxWait" value="3000" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="minEvictableIdleTimeMillis" value="1800000" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testWhileIdle" value="true" />
+		<property name="removeAbandoned" value="true" />
+		<property name="removeAbandonedTimeout" value="180" />
+	</bean>
+
+	<bean id="testsqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="testdataSource" />
+		<property name="configLocation" value="classpath:test-mybatis-config.xml" />
+	</bean>
+
+
+	<!-- redis 共享缓存 打开 jedis连接池配置 jedis连接工厂配置 重写jdk序列化，解决反序列化找不到类的问题 设置Cookie 
+		domain 和 名称 spring redis session配置 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle" value="${redis.maxIdle}" />
+		<property name="maxTotal" value="${redis.maxTotal}" />
+		<property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
+		<property name="testOnReturn" value="${redis.testOnReturn}" />
+	</bean>
+	<bean id="jedisConnectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		destroy-method="destroy">
+		<property name="hostName" value="${redis.host}" />
+		<property name="port" value="${redis.port}" />
+		<property name="poolConfig" ref="jedisPoolConfig" />
+		<property name="password" value="${redis.pass}" />
+	</bean>
+
+	<bean id="redisJdkSerializer"
+		class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+	<bean id="defaultCookieSerializer"
+		class="com.ruirados.util.CustomerCookiesSerializer">
+		<property name="domainName" value=".xrcloud.net" />
+		<property name="cookieName" value="XJSESSIONID" />
+		<property name="cookiePath" value="/" />
+	</bean>
+	<bean id="redisHttpSessionConfiguration"
+		class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration">
+		<property name="defaultRedisSerializer" ref="redisJdkSerializer" />
+		<property name="maxInactiveIntervalInSeconds" value="3600" />
+		<property name="cookieSerializer" ref="defaultCookieSerializer" />
+	</bean>
+
+</beans>

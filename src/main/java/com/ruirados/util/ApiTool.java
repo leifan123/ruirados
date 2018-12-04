@@ -1,0 +1,589 @@
+/**
+ * @author YuLong.Dai
+ * @time 2017年3月30日 下午3:33:06
+ * TODO
+ */
+package com.ruirados.util;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+
+/**
+ * @author YuLong.Dai
+ * @time 2017年3月30日 下午3:33:06
+ */
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URLEncoder;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
+import com.ruirados.service.UserCoreAccessService;
+import com.yunrui.pojo.YrComper;
+
+import net.sf.json.JSONObject;
+
+
+public class ApiTool {
+	
+	private static DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	@Autowired
+	private UserCoreAccessService userCoreAccessService;
+	private static Logger logger = Logger.getLogger(ApiTool.class);
+
+	/**
+	 * @param args
+	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeyException
+	 * @throws IOException
+	 * @throws HttpException
+	 */
+	public static Map<String, String> command(String command, Map<String, String> params)
+			throws InvalidKeyException, NoSuchAlgorithmException, HttpException, IOException {
+		// TODO Auto-generated method stub
+
+		String developerServer = Cache.get("developerServer");
+		String ApiKey = Cache.get("ApiKey");
+		String s_secretKey = Cache.get("s_secretKey");
+		String encodedApiKey = URLEncoder.encode(ApiKey, "UTF-8");
+		String urlold = "apikey=" + encodedApiKey;
+		urlold += "&command=" + command;
+		for (String key : params.keySet()) {
+			urlold += "&" + key + "=" + params.get(key);
+		}
+		String signature = signRequest(urlold.toLowerCase(), s_secretKey);
+		String encodedSignature = URLEncoder.encode(signature, "UTF-8");
+		String url = developerServer + "?" + urlold + "&signature=" + encodedSignature;
+		// String url = developerServer + "?command=listUsers&apikey="+
+		HttpClient client = new HttpClient();
+		String timeOut = Prop.getInstance().getPropertiesByPro("cloudStack.properties", "httpClient.timeOut");
+		client.setConnectionTimeout(Integer.parseInt(timeOut));
+		client.setTimeout(Integer.parseInt(timeOut));
+		GetMethod method = new GetMethod(url);
+		// System.out.println(url);
+		int responseCode = client.executeMethod(method);
+
+		// s_logger.info("url is " + url);
+		// s_logger.info("list ip addresses for user " + userId +
+		// " response code: " + responseCode);
+		if (responseCode == 200) {
+			InputStream is = method.getResponseBodyAsStream();
+			Map<String, String> success = getSingleValueFromXML(is, new String[] { "accountid" });
+			return success;
+			// s_logger.info("Enable Static NAT..success? " +
+			// success.get("success"));
+		} else {
+			// s_logger.error("Enable Static NAT failed with error code: " +
+			// responseCode + ". Following URL was sent: " + url);
+			// return responseCode;
+			return null;
+		}
+
+	}
+
+	public static String signRequest(String request, String secretkey)
+			throws NoSuchAlgorithmException, InvalidKeyException {
+		Mac mac = Mac.getInstance("HmacSHA1");
+		SecretKeySpec keySpec = new SecretKeySpec(secretkey.getBytes(), "HmacSHA1");
+		mac.init(keySpec);
+		mac.update(request.getBytes());
+		byte[] encryptedBytes = mac.doFinal();
+		return new String(Base64.encodeBase64(encryptedBytes));
+	}
+
+	public static Map<String, String> getSingleValueFromXML(InputStream is, String[] tagNames) {
+		Map<String, String> returnValues = new HashMap<String, String>();
+		try {
+			DocumentBuilder docBuilder = factory.newDocumentBuilder();
+			Document doc = docBuilder.parse(is);
+			Element rootElement = doc.getDocumentElement();
+
+			for (int i = 0; i < tagNames.length; i++) {
+				NodeList targetNodes = rootElement.getElementsByTagName(tagNames[i]);
+				if (targetNodes.getLength() <= 0) {
+					// s_logger.error("no " + tagNames[i] +
+					// " tag in XML response...returning null");
+				} else {
+					returnValues.put(tagNames[i], targetNodes.item(0).getTextContent());
+				}
+			}
+		} catch (Exception ex) {
+			logger.error(ex);
+		}
+		return returnValues;
+	}
+
+	/*
+	 * public static Map<String,Object> getBody(HttpServletRequest request)
+	 * throws IOException { String json = null; StringBuilder stringBuilder =
+	 * new StringBuilder(); BufferedReader bufferedReader = null; try {
+	 * InputStream inputStream = request.getInputStream(); if (inputStream !=
+	 * null) { bufferedReader = new BufferedReader(new
+	 * InputStreamReader(inputStream,"utf-8")); char[] charBuffer = new
+	 * char[128]; int bytesRead = -1; while ((bytesRead =
+	 * bufferedReader.read(charBuffer)) > 0) { stringBuilder.append(charBuffer,
+	 * 0, bytesRead); } } else { stringBuilder.append(""); } } catch
+	 * (IOException ex) { throw ex; } finally { if (bufferedReader != null) {
+	 * try { bufferedReader.close(); } catch (IOException ex) { throw ex; } } }
+	 * 
+	 * json = stringBuilder.toString(); return
+	 * JSONUtils.getMapObjectByJson(json); }
+	 */
+
+	/**
+	 * 报文解析
+	 * 
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
+	public static Map<String, String> getBodyString(HttpServletRequest request) throws IOException {
+		 
+		String json = null;
+		StringBuilder stringBuilder = new StringBuilder();
+		BufferedReader bufferedReader = null;
+		InputStream inputStream = null;
+		try {
+			inputStream = request.getInputStream();
+			if (inputStream != null) {
+				bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
+				char[] charBuffer = new char[1024];
+				int bytesRead = -1;
+				while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
+					stringBuilder.append(charBuffer, 0, bytesRead);
+				}
+			} else {
+				stringBuilder.append("");
+			}
+		} catch (IOException ex) {
+			logger.error(ex);
+			throw ex;
+		} finally {
+			if (bufferedReader != null) {
+				try {
+					bufferedReader.close();
+				} catch (IOException ex) {
+					logger.error(ex);
+					throw ex;
+				}
+			}
+			if (inputStream != null) {
+				try {
+					inputStream.close();
+				} catch (IOException ex) {
+					logger.error(ex);
+					throw ex;
+				}
+			}
+		}
+
+		json = stringBuilder.toString();
+	 
+		if("api".equals(Prop.getInstance().getPropertiesByPro("ruirados.properties", "model_type"))){
+			
+			String[] arr = json.split("&");
+			
+			 Map<String,String> map = new HashMap<String,String>();
+			 
+			 if(arr == null  ||  arr.length == 0){
+				 return null;
+			 }else{
+				 for (int i = 0; i < arr.length; i++) {
+						
+					 String param[] = arr[i].split("=");
+					 
+					 if(param.length == 1){
+						 map.put(param[0], null);
+					 }else{
+						 map.put(param[0], param[1]);
+					 }
+				 }
+			 }
+			return map;
+		}else{
+			return JSONUtils.getMapByJson(json);
+		}
+		
+		
+	}
+	
+	/**
+	 * 报文解析
+	 * 
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
+	public static Map<String, Object> getBodyObject(HttpServletRequest request) throws IOException {
+		 
+		String json = null;
+		StringBuilder stringBuilder = new StringBuilder();
+		BufferedReader bufferedReader = null;
+		InputStream inputStream = null;
+		try {
+			inputStream = request.getInputStream();
+			if (inputStream != null) {
+				bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "utf-8"));
+				char[] charBuffer = new char[1024];
+				int bytesRead = -1;
+				while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
+					stringBuilder.append(charBuffer, 0, bytesRead);
+				}
+			} else {
+				stringBuilder.append("");
+			}
+		} catch (IOException ex) {
+			logger.error(ex);
+			throw ex;
+		} finally {
+			if (bufferedReader != null) {
+				try {
+					bufferedReader.close();
+				} catch (IOException ex) {
+					logger.error(ex);
+					throw ex;
+				}
+			}
+			if (inputStream != null) {
+				try {
+					inputStream.close();
+				} catch (IOException ex) {
+					logger.error(ex);
+					throw ex;
+				}
+			}
+		}
+
+		json = stringBuilder.toString();
+	 
+		if("api".equals(Prop.getInstance().getPropertiesByPro("ruirados.properties", "model_type"))){
+			
+			String[] arr = json.split("&");
+			
+			 Map<String,Object> map = new HashMap<String,Object>();
+			 
+			 if(arr == null  ||  arr.length == 0){
+				 return null;
+			 }else{
+				 for (int i = 0; i < arr.length; i++) {
+						
+					 String param[] = arr[i].split("=");
+					 
+					 if(param.length == 1){
+						 map.put(param[0], null);
+					 }else{
+						 map.put(param[0], param[1]);
+					 }
+				 }
+			 }
+			return map;
+		}else{
+			return JSONObject.fromObject(json);
+		}
+		
+		
+	}
+
+	/**
+	 * 报文解析
+	 * 
+	 * @param request
+	 * @return
+	 * @throws IOException
+	 */
+	public static String getBodyStringtoStr(ServletRequest request) {
+		StringBuilder sb = new StringBuilder();
+		InputStream inputStream = null;
+		BufferedInputStream bufferedInput = null;
+		try {
+			inputStream = request.getInputStream();
+			bufferedInput = new BufferedInputStream(inputStream);
+
+			byte[] buffer = new byte[1024];
+			int bytesRead = -1;
+			while ((bytesRead = bufferedInput.read(buffer)) != -1) {
+				String chunk = new String(buffer, 0, bytesRead);
+				sb.append(chunk);
+			}
+		} catch (IOException e) {
+			logger.error(e);
+			e.printStackTrace();
+		} finally {
+			if (bufferedInput != null) {
+				try {
+					bufferedInput.close();
+				} catch (IOException e) {
+					logger.error(e);
+					e.printStackTrace();
+				}
+			}
+		}
+		return sb.toString();
+
+	}
+
+	/**
+	 * 加密
+	 * 
+	 * @param paramMap
+	 * @return
+	 */
+	public static HashMap<String, Object> mac(LinkedHashMap<String, String> paramMap) {
+
+		// 防篡改
+		// String[] queryList = queryString.split("&");
+
+		StringBuffer sb = new StringBuffer();
+		int i = 0;
+
+		boolean mac_flag = false;
+		String mac_value = "";
+		// 循环遍历参数键值
+		for (String key : paramMap.keySet()) {
+			// 将 参数名=xxx 拆分
+
+			if ("mac".equals(key)) {
+
+				mac_value = paramMap.get(key);
+				mac_flag = true;
+				continue;
+			}
+			i++;
+
+			sb.append(key.substring(0, 1)).append(paramMap.get(key));
+
+		}
+		// 判断是否传递mac字段
+		if (!mac_flag) {
+			HashMap<String, Object> result = new HashMap<String, Object>();
+			result.put("status", GetResult.ERROR_STATUS);
+			result.put("msg", "必要参数请求缺失!");
+			return result;
+		}
+
+		sb.append(i);
+
+		String mac = MD5.MD5(sb.toString());
+		mac = mac.substring(0, i) + i + mac.substring(i, mac.length());
+
+		if (!mac.equals(mac_value)) {
+			HashMap<String, Object> result = new HashMap<String, Object>();
+			result.put("status", GetResult.ERROR_STATUS);
+			result.put("msg", "请求校验异常!");
+			return result;
+		}
+
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		result.put("status", GetResult.SUCCESS_STATUS);
+		return result;
+	}
+
+	/**
+	 * 获取zoneid
+	 * 
+	 * @param paramMap
+	 * @return
+	 */
+	public static String getZoneIdByCfg(String config) {
+
+		String zoneid = null;
+
+		if (config.contains("zoneid")) {
+
+			int yb = config.indexOf("zoneid");
+
+			try {
+
+				zoneid = config.substring(yb + 9, yb + 45);
+
+			} catch (Exception e) {
+				logger.error(e);
+				// TODO: handle exception
+				return null;
+			}
+
+		} else {
+			return null;
+		}
+
+		return zoneid;
+	}
+
+	/**
+	 * 1实时 ， 0其他 获取支付类型
+	 * 
+	 * @param paramMap
+	 * @return
+	 */
+	public static int getZfTypeByDis(String display) {
+
+		if (display.contains("时长")) {
+
+			int yb = display.indexOf("时长");
+
+			try {
+
+				String zftype = display.substring(yb + 5, yb + 7);
+
+				if ("实时".equals(zftype)) {
+					return 1;
+				}
+
+			} catch (Exception e) {
+				logger.error(e);
+				// TODO: handle exception
+				return 0;
+			}
+
+		} else {
+			return 0;
+		}
+
+		return 0;
+	}
+
+	  
+
+	public static Integer getnextTime(Map<Integer, Integer> actnumMap, Calendar cal) {
+
+		// 10 12 15 17
+		// 15
+		cal.get(Calendar.HOUR_OF_DAY);
+
+		Integer sg = 23;
+
+		for (Integer key : actnumMap.keySet()) {
+
+			if (cal.get(Calendar.HOUR_OF_DAY) < key) {
+
+				return key;
+
+			}
+		}
+
+		return sg;
+	}
+
+	//获取web  api
+	public static YrComper getUserMsg(HttpServletRequest httpServletRequest) {
+		YrComper yr = new YrComper();
+		if ("api".equals(Prop.getInstance().getPropertiesByPro("ruirados.properties", "model_type"))) {
+
+			
+
+			String token = "";
+
+			Map<String, String> paramMap = null;
+
+			try {
+
+				if ("POST".equalsIgnoreCase(httpServletRequest.getMethod())) {
+
+					
+
+					paramMap = ApiTool.getBodyString(httpServletRequest);
+
+					token = paramMap.get("token");
+					// 必须加上
+					// request = requestWrapper;
+
+				} else if ("GET".equalsIgnoreCase(httpServletRequest.getMethod())) {
+					token = httpServletRequest.getParameter("token");
+				}
+
+				// 获取企业ID
+				String token_code = "";
+
+				token_code = DesUtils.getInstance().decrypt(token);
+
+				String[] secretArr = token_code.split("#");
+
+				String companyid = secretArr[1];
+
+				yr.setCompanyid(companyid);
+				return yr;
+
+			} catch (IOException e) {
+				logger.error(e);
+				// 这个地方要好好搞下
+			} catch (Exception e) {
+				logger.error(e);
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		
+
+		if (httpServletRequest == null) {
+			// web
+		} else {
+			yr = (YrComper) httpServletRequest.getSession(false).getAttribute("comper");
+//			yr.setCompanyid("153250898029");
+		}
+		return yr;
+
+	}
+	
+	/**
+	 * 获取ceph 
+	 * @param access_keys
+	 * @param secret_keys
+	 * @return
+	 *//*
+	public static AmazonS3 creatConnect(String access_keys, String secret_keys) {
+		AWSCredentials credentials = new BasicAWSCredentials(access_keys, secret_keys);
+		ClientConfiguration clientConfig = new ClientConfiguration();
+		clientConfig.setSignerOverride("S3SignerType");
+		clientConfig.setProtocol(Protocol.HTTPS);
+		AmazonS3 conn = new AmazonS3ClientSerialize(credentials,clientConfig);
+		
+		return conn;
+	 }*/
+	
+	
+	public static String generateAccessKey(String companyId){
+		String org = companyId + TimeUtil.getTime();
+		return MD5.MD5(org);
+	}
+	
+	public static String generateOssAccessSecret() {
+
+		char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+				'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+		boolean[] flags = new boolean[letters.length];
+		char[] chs = new char[32];
+		for (int i = 0; i < chs.length; i++) {
+			int index;
+			do {
+				index = (int) (Math.random() * (letters.length));
+			} while (flags[index]);// 判断生成的字符是否重复
+			chs[i] = letters[index];
+			flags[index] = true;
+		}
+		return chs.toString();
+	}
+}

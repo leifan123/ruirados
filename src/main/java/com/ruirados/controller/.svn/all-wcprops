@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/ruicloud/!svn/ver/3881/trunk/ruirados/src/main/java/com/ruirados/controller
+END
+PictureManageController.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/ruicloud/!svn/ver/3932/trunk/ruirados/src/main/java/com/ruirados/controller/PictureManageController.java
+END
+BucketAclController.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/ruicloud/!svn/ver/3665/trunk/ruirados/src/main/java/com/ruirados/controller/BucketAclController.java
+END
+OperateLogController.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/ruicloud/!svn/ver/3706/trunk/ruirados/src/main/java/com/ruirados/controller/OperateLogController.java
+END
+ObjectController.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/3788/trunk/ruirados/src/main/java/com/ruirados/controller/ObjectController.java
+END
+SystemController.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/3419/trunk/ruirados/src/main/java/com/ruirados/controller/SystemController.java
+END
+CorsController.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/3699/trunk/ruirados/src/main/java/com/ruirados/controller/CorsController.java
+END
+ZoneController.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/3706/trunk/ruirados/src/main/java/com/ruirados/controller/ZoneController.java
+END
+UserController.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/3866/trunk/ruirados/src/main/java/com/ruirados/controller/UserController.java
+END
+BucketController.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/3949/trunk/ruirados/src/main/java/com/ruirados/controller/BucketController.java
+END
+MonitorController.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/ruicloud/!svn/ver/3975/trunk/ruirados/src/main/java/com/ruirados/controller/MonitorController.java
+END
+FluxController.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/4149/trunk/ruirados/src/main/java/com/ruirados/controller/FluxController.java
+END

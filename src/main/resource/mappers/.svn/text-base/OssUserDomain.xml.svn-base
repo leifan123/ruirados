@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssUserDomainDao">
+
+	<resultMap id="OssUserDomainMap" type="com.ruirados.pojo.OssUserDomain">
+		<id property="id" column="id" />
+		<result property="code" column="code" />
+		<result property="companyid" column="companyId" />
+		<result property="cephcustomdomain" column="cephCustomDomain" />
+		<result property="zoneid" column="zoneId" />
+		<result property="version" column="version" />
+		<result property="isdisplay" column="isDisplay" />
+		<result property="state" column="state" />
+		<result property="createtime" column="createTime" />
+		<result property="lasttime" column="lastTime" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssUserDomain">
+		insert into oss_user_domain
+		(code,companyId,cephCustomDomain,zoneId,version,isDisplay,state,createTime,lastTime,remark)
+		values(#{code},#{companyid},#{cephcustomdomain},#{zoneid},#{version},#{isdisplay},#{state},#{createtime},#{lasttime},#{remark})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssUserDomain">
+		update oss_user_domain
+		<set>
+			<if test="code!=null">code = #{code},</if>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="cephcustomdomain!=null">cephCustomDomain = #{cephcustomdomain},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="version!=null">version = #{version},</if>
+			<if test="isdisplay!=null">isDisplay = #{isdisplay},</if>
+			<if test="state!=null">state = #{state},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="lasttime!=null">lastTime = #{lasttime},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssUserDomain">
+		delete from oss_user_domain where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="cephcustomdomain != null"> and cephCustomDomain = #{cephcustomdomain}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="OssUserDomainMap" parameterType="com.ruirados.pojo.OssUserDomain">
+		select * from oss_user_domain where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="cephcustomdomain != null"> and cephCustomDomain = #{cephcustomdomain}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssUserDomainMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_user_domain
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_user_domain
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_user_domain set ${param}</if>
+	</update>
+
+</mapper>

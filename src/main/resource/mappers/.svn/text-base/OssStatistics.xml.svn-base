@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssStatisticsDao">
+
+	<resultMap id="OssStatisticsMap" type="com.ruirados.pojo.OssStatistics">
+		<id property="id" column="id"/>
+		<result property="companyid" column="companyId"/>
+		<result property="zoneid" column="zoneId"/>
+		<result property="bucketname" column="bucketName"/>
+		<result property="puttimes" column="putTimes"/>
+		<result property="gettimes" column="getTimes"/>
+		<result property="posttimes" column="postTimes"/>
+		<result property="deletetimes" column="deleteTimes"/>
+		<result property="getflows" column="getFlows"/>
+		<result property="objectsize" column="objectSize"/>
+		<result property="date" column="date"/>
+		<result property="time" column="time"/>
+		<result property="status" column="status"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.ruirados.pojo.OssStatistics">
+		insert into  oss_statistics (companyId,zoneId,bucketName,putTimes,getTimes,postTimes,deleteTimes,getFlows,objectSize,date,time,status,remark) values(#{companyid},#{zoneid},#{bucketname},#{puttimes},#{gettimes},#{posttimes},#{deletetimes},#{getflows},#{objectsize},#{date},#{time},#{status},#{remark})	
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssStatistics">
+		update oss_statistics
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="bucketname!=null">bucketName = #{bucketname},</if>
+			<if test="puttimes!=null">putTimes = #{puttimes},</if>
+			<if test="gettimes!=null">getTimes = #{gettimes},</if>
+			<if test="posttimes!=null">postTimes = #{posttimes},</if>
+			<if test="deletetimes!=null">deleteTimes = #{deletetimes},</if>
+			<if test="getflows!=null">getFlows = #{getflows},</if>
+			<if test="objectsize!=null">objectSize = #{objectsize},</if>
+			<if test="date!=null">date = #{date},</if>
+			<if test="time!=null">time = #{time},</if>
+			<if test="status!=null">status = #{status},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssStatistics">
+		delete from oss_statistics where 1=1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="bucketname != null"> and bucketName = #{bucketname}</if>
+			<if test="puttimes != null"> and putTimes = #{puttimes}</if>
+			<if test="gettimes != null"> and getTimes = #{gettimes}</if>
+			<if test="posttimes != null"> and postTimes = #{posttimes}</if>
+			<if test="deletetimes != null"> and deleteTimes = #{deletetimes}</if>
+			<if test="getflows != null"> and getFlows = #{getflows}</if>
+			<if test="objectsize != null"> and objectSize = #{objectsize}</if>
+			<if test="date!=null"> and date = #{date}</if>
+			<if test="time!=null"> and time = #{time}</if>
+			<if test="status != null"> and status = #{status}</if>
+			<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="OssStatisticsMap" parameterType="com.ruirados.pojo.OssStatistics">
+		select * from oss_statistics where 1 = 1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="bucketname != null"> and bucketName = #{bucketname}</if>
+			<if test="puttimes != null"> and putTimes = #{puttimes}</if>
+			<if test="gettimes != null"> and getTimes = #{gettimes}</if>
+			<if test="posttimes != null"> and postTimes = #{posttimes}</if>
+			<if test="deletetimes != null"> and deleteTimes = #{deletetimes}</if>
+			<if test="getflows != null"> and getFlows = #{getflows}</if>
+			<if test="objectsize != null"> and objectSize = #{objectsize}</if>
+			<if test="date!=null"> and date = #{date}</if>
+			<if test="time!=null"> and time = #{time}</if>
+			<if test="status != null"> and status = #{status}</if>
+			<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssStatisticsMap" parameterType="java.util.Map">
+		select  <if test="field != null and field != ''"> ${field}</if>  <if test="field == null or field == ''"> * </if>     from oss_statistics <if test="param != null and param != ''"> ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_statistics  <if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_statistics set ${param}</if>
+	</update>
+
+	<select id="selectByCount" resultType="java.lang.String"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_statistics
+		<if test="param != null and param != ''">${param}</if>
+		<if test="order != null and order != ''">${order}</if>
+	</select>
+
+	<select id="selectByHour" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_statistics
+		<if test="param != null and param != ''">${param}</if>
+		<if test="order != null and order != ''">${order}</if>
+	</select>
+</mapper>

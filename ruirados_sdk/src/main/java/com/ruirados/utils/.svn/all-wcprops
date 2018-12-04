@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ruicloud/!svn/ver/2290/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils
+END
+ExptNum.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/ExptNum.java
+END
+JobStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/JobStatus.java
+END
+Base64.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/Base64.java
+END
+TimeUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/TimeUtil.java
+END
+HttpUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/HttpUtil.java
+END
+QueryConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/QueryConfig.java
+END
+HttpUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/HttpUtils.java
+END
+JSONUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/JSONUtils.java
+END
+NormName.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/NormName.java
+END
+HttpRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/HttpRequest.java
+END
+ResponseBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/ResponseBody.java
+END
+Random.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/Random.java
+END
+Prop.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/Prop.java
+END
+Cache.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/Cache.java
+END
+Config.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/Config.java
+END
+MD5Util.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/MD5Util.java
+END
+FcUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/FcUtil.java
+END
+DesUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/DesUtils.java
+END
+SignUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/SignUtil.java
+END
+FileUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/FileUtil.java
+END
+MD5.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/MD5.java
+END
+ParamIsNull.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/ParamIsNull.java
+END
+Uuid.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/Uuid.java
+END
+WebConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/WebConstants.java
+END
+XmlUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/XmlUtil.java
+END
+HttpReq.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/ruicloud/!svn/ver/2289/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/HttpReq.java
+END
+uploadfileUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/ruicloud/!svn/ver/2290/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/uploadfileUtils.java
+END
+MyJSON.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/MyJSON.java
+END
+MappingConfigura.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/utils/MappingConfigura.java
+END

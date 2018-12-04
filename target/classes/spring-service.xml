@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- boss -->
+	<bean id="YrComperService" class="com.ruirados.service.impl.YrComperImpl">
+		<property name="yrComperDao" ref="YrComperDao" />
+	</bean>
+
+	<bean id="YrAuthlogService" class="com.ruirados.service.impl.YrAuthlogImpl">
+		<property name="yrAuthlogDao" ref="YrAuthlogDao" />
+	</bean>
+
+	<!-- cloud -->
+	<bean id="UserAccessService" class="com.ruirados.service.impl.UserAccessImpl">
+		<property name="userAccessDao" ref="UserAccessDao" />
+	</bean>
+
+	<bean id="CustomMonitorIndexService" class="com.ruirados.service.impl.CustomMonitorIndexImpl">
+ 		<property name="customMonitorIndexDao" ref="CustomMonitorIndexDao" />
+ 	</bean>
+ 	
+ 	<bean id="PandectCustomMonitorIndexService" class="com.ruirados.service.impl.PandectCustomMonitorIndexImpl">
+ 		<property name="pandectCustomMonitorIndexDao" ref="PandectCustomMonitorIndexDao" />
+ 	</bean>
+
+	<bean id="PandectbigCustomMonitorIndexService" class="com.ruirados.service.impl.PandectbigCustomMonitorIndexImpl">
+ 		<property name="pandectbigCustomMonitorIndexDao" ref="PandectbigCustomMonitorIndexDao" />
+ 	</bean>
+
+	<bean id="UserCoreAccessService" class="com.ruirados.service.impl.UserCoreAccessImpl">
+		<property name="userCoreAccessDao" ref="UserCoreAccessDao" />
+	</bean>
+	<bean id="GetfreevminformationService" class="com.ruirados.service.impl.GetfreevminformationImpl">
+		<property name="getfreevminformationDao" ref="GetfreevminformationDao" />
+	</bean>
+	<bean id="UserTypeSourceService" class="com.ruirados.service.impl.UserTypeSourceImpl">
+		<property name="userTypeSourceDao" ref="UserTypeSourceDao" />
+	</bean>
+	<!-- oss -->
+	<bean id="OssAclService" class="com.ruirados.service.impl.OssAclImpl">
+		<property name="ossAclDao" ref="OssAclDao" />
+	</bean>
+	
+	<bean id="OssArrearageService" class="com.ruirados.service.impl.OssArrearageImpl">
+ 		<property name="ossArrearageDao" ref="OssArrearageDao" />
+ 	</bean>
+
+	<bean id="OssBucketService" class="com.ruirados.service.impl.OssBucketImpl">
+		<property name="ossBucketDao" ref="OssBucketDao" />
+	</bean>
+
+	<bean id="OssObjectService" class="com.ruirados.service.impl.OssObjectImpl">
+		<property name="ossObjectDao" ref="OssObjectDao" />
+	</bean>
+
+	<bean id="OssOperatelogService" class="com.ruirados.service.impl.OssOperatelogImpl">
+		<property name="ossOperatelogDao" ref="OssOperatelogDao" />
+	</bean>
+
+	<bean id="OssSyslogService" class="com.ruirados.service.impl.OssSyslogImpl">
+		<property name="ossSyslogDao" ref="OssSyslogDao" />
+	</bean>
+
+	<bean id="OssUsedMonitorService" class="com.ruirados.service.impl.OssUsedMonitorImpl">
+		<property name="ossUsedMonitorDao" ref="OssUsedMonitorDao" />
+	</bean>
+
+	<bean id="OssZoneService" class="com.ruirados.service.impl.OssZoneImpl">
+		<property name="ossZoneDao" ref="OssZoneDao" />
+	</bean>
+
+	<!-- bucket -->
+	<bean id="ossBucketService" class="com.ruirados.service.impl.OssBucketImpl">
+		<property name="ossBucketDao" ref="ossBucketDao" />
+	</bean>
+	
+	<bean id="OssActivityService" class="com.ruirados.service.impl.OssActivityImpl">
+ 		<property name="ossActivityDao" ref="OssActivityDao" />
+ 	</bean>
+
+	<bean id="OssFluxPriceService" class="com.ruirados.service.impl.OssFluxPriceImpl">
+ 		<property name="ossFluxPriceDao" ref="OssFluxPriceDao" />
+ 	</bean>
+
+	<bean id="OssCorsService" class="com.ruirados.service.impl.OssCorsImpl">
+		<property name="ossCorsDao" ref="OssCorsDao" />
+	</bean>
+
+	<bean id="OssUserDomainService" class="com.ruirados.service.impl.OssUserDomainImpl">
+		<property name="ossUserDomainDao" ref="OssUserDomainDao" />
+	</bean>
+
+	<bean id="OssMonitorService" class="com.ruirados.service.impl.OssMonitorImpl">
+		<property name="ossMonitorDao" ref="OssMonitorDao" />
+	</bean>
+
+	<bean id="OssFluxService" class="com.ruirados.service.impl.OssFluxImpl">
+		<property name="ossFluxDao" ref="OssFluxDao" />
+	</bean>
+
+	<bean id="OssUserFluxService" class="com.ruirados.service.impl.OssUserFluxImpl">
+		<property name="ossUserFluxDao" ref="OssUserFluxDao" />
+	</bean>
+	
+	<bean id="OssPictureService" class="com.ruirados.service.impl.OssPictureImpl">
+		<property name="ossPictureDao" ref="OssPictureDao" />
+	</bean>
+	
+		
+	<bean id="Test1Service" class="com.ruirados.service.impl.Test1Impl">
+ 		<property name="test1Dao" ref="Test1Dao" />
+ 	</bean>
+
+	<bean id="OssStatisticsService" class="com.ruirados.service.impl.OssStatisticsImpl">
+ 		<property name="ossStatisticsDao" ref="OssStatisticsDao" />
+ 	</bean>
+	
+</beans>

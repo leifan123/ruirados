@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/ruicloud/!svn/ver/3876/trunk/ruirados/src/main/resource/mappers
+END
+OssFlux.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/ruicloud/!svn/ver/3971/trunk/ruirados/src/main/resource/mappers/OssFlux.xml
+END
+OssBucket.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/ruicloud/!svn/ver/3496/trunk/ruirados/src/main/resource/mappers/OssBucket.xml
+END
+OssZone.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/ruicloud/!svn/ver/3159/trunk/ruirados/src/main/resource/mappers/OssZone.xml
+END
+OssAcl.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/mappers/OssAcl.xml
+END
+OssArrearage.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/ruicloud/!svn/ver/3547/trunk/ruirados/src/main/resource/mappers/OssArrearage.xml
+END
+OssCors.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/mappers/OssCors.xml
+END
+OssUserDomain.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/mappers/OssUserDomain.xml
+END
+OssActivity.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/ruicloud/!svn/ver/3971/trunk/ruirados/src/main/resource/mappers/OssActivity.xml
+END
+OssUserFlux.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/ruicloud/!svn/ver/3876/trunk/ruirados/src/main/resource/mappers/OssUserFlux.xml
+END
+OssSyslog.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/mappers/OssSyslog.xml
+END
+OssMonitor.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/mappers/OssMonitor.xml
+END
+OssObject.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/mappers/OssObject.xml
+END
+OssUsedMonitor.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/mappers/OssUsedMonitor.xml
+END
+OssOperatelog.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/mappers/OssOperatelog.xml
+END
+OssPicture.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ruicloud/!svn/ver/3773/trunk/ruirados/src/main/resource/mappers/OssPicture.xml
+END
+OssFluxPrice.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/ruicloud/!svn/ver/3971/trunk/ruirados/src/main/resource/mappers/OssFluxPrice.xml
+END
+OssStatistics.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ruicloud/!svn/ver/3259/trunk/ruirados/src/main/resource/mappers/OssStatistics.xml
+END

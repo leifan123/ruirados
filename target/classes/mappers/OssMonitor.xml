@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssMonitorDao">
+
+	<resultMap id="OssMonitorMap" type="com.ruirados.pojo.OssMonitor">
+		<id property="id" column="id" />
+		<result property="companyid" column="companyId" />
+		<result property="zoneid" column="zoneId" />
+		<result property="bucketname" column="bucketName" />
+		<result property="times" column="times" />
+		<result property="size" column="size" />
+		<result property="date" column="date" />
+		<result property="time" column="time" />
+		<result property="type" column="type" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssMonitor">
+		insert into oss_monitor
+		(companyId,zoneId,bucketName,times,size,date,time,type)
+		values(#{companyid},#{zoneid},#{bucketname},#{times},#{size},#{date},#{time},#{type})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssMonitor">
+		update oss_monitor
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="bucketname!=null">bucketName = #{bucketname},</if>
+			<if test="times!=null">times = #{times},</if>
+			<if test="size!=null">size = #{size},</if>
+			<if test="date!=null">date = #{date},</if>
+			<if test="time!=null">time = #{time},</if>
+			<if test="type!=null">type = #{type}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssMonitor">
+		delete from oss_monitor where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="bucketname != null"> and bucketName = #{bucketname}</if>
+		<if test="times != null"> and times = #{times}</if>
+		<if test="size != null"> and size = #{size}</if>
+		<if test="date != null"> and date = #{date}</if>
+		<if test="time != null"> and time = #{time}</if>
+		<if test="type != null"> and type = #{type}</if>
+	</delete>
+
+	<select id="select" resultMap="OssMonitorMap" parameterType="com.ruirados.pojo.OssMonitor">
+		select * from oss_monitor where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="bucketname != null"> and bucketName = #{bucketname}</if>
+		<if test="times != null"> and times = #{times}</if>
+		<if test="size != null"> and size = #{size}</if>
+		<if test="date != null"> and date = #{date}</if>
+		<if test="time != null"> and time = #{time}</if>
+		<if test="type != null"> and type = #{type}</if>
+		order by id asc
+	</select>
+
+	<select id="selectByParam" resultMap="OssMonitorMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_monitor
+		<if test="param != null and param != ''">${param}</if>
+		<if test="order != null and order != ''">${order}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_monitor
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_monitor set ${param}</if>
+	</update>
+
+	<select id="selectByCount" resultType="java.lang.String"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_monitor
+		<if test="param != null and param != ''">${param}</if>
+		<if test="order != null and order != ''">${order}</if>
+	</select>
+
+	<select id="selectByHour" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_monitor
+		<if test="param != null and param != ''">${param}</if>
+		<if test="order != null and order != ''">${order}</if>
+	</select>
+</mapper>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssBucketDao">
+
+	<resultMap id="OssBucketMap" type="com.ruirados.pojo.OssBucket">
+		<id property="id" column="id" />
+		<result property="code" column="code" />
+		<result property="companyid" column="companyId" />
+		<result property="version" column="version" />
+		<result property="isdisplay" column="isDisplay" />
+		<result property="name" column="name" />
+		<result property="accessrights" column="accessRights" />
+		<result property="zoneid" column="zoneId" />
+		<result property="state" column="state" />
+		<result property="createtime" column="createTime" />
+		<result property="lasttime" column="lastTime" />
+		<result property="remark" column="remark" />
+		<result property="flowsize" column="flowSize" />
+		<result property="requesttimes" column="requestTimes" />
+		<result property="capacity" column="capacity" />
+		
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssBucket">
+		insert into oss_bucket
+		(code,companyId,version,isDisplay,name,accessRights,zoneId,state,createTime,lastTime,remark,flowSize,requestTimes)
+		values(#{code},#{companyid},#{version},#{isdisplay},#{name},#{accessrights},#{zoneid},#{state},#{createtime},#{lasttime},#{remark},#{flowsize},#{requesttimes})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssBucket">
+		update oss_bucket
+		<set>
+			<if test="code!=null">code = #{code},</if>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="version!=null">version = #{version},</if>
+			<if test="isdisplay!=null">isDisplay = #{isdisplay},</if>
+			<if test="name!=null">name = #{name},</if>
+			<if test="accessrights!=null">accessRights = #{accessrights},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="state!=null">state = #{state},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="lasttime!=null">lastTime = #{lasttime},</if>
+			<if test="remark!=null">remark = #{remark},</if>
+			<if test="flowsize!=null">flowSize = #{flowsize},</if>
+			<if test="requesttimes!=null">requestTimes = #{requesttimes},</if>
+			<if test="capacity!=null">capacity = #{capacity}</if>
+			
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssBucket">
+		delete from oss_bucket where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="name != null"> and name = #{name}</if>
+		<if test="accessrights != null"> and accessRights = #{accessrights}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+		<if test="flowsize != null"> and flowSize = #{flowsize}</if>
+		<if test="requesttimes != null"> and requestTimes = #{requesttimes}</if>
+	</delete>
+
+	<select id="select" resultMap="OssBucketMap" parameterType="com.ruirados.pojo.OssBucket">
+		select * from oss_bucket where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="name != null"> and name = #{name}</if>
+		<if test="accessrights != null"> and accessRights = #{accessrights}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+		<if test="flowsize != null"> and flowSize = #{flowsize}</if>
+		<if test="requesttimes != null"> and requestTimes = #{requesttimes}</if>
+		<if test="capacity!=null">capacity = #{capacity}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssBucketMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_bucket
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<select id="selectCount" resultType="int" parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_bucket
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_bucket
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_bucket set ${param}</if>
+	</update>
+
+</mapper>

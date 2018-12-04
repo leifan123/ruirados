@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ruicloud/!svn/ver/2289/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/service
+END
+creatConnService.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/ruicloud/!svn/ver/2279/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/service/creatConnService.java
+END
+AclService.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/ruicloud/!svn/ver/2279/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/service/AclService.java
+END
+BucketService.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/ruicloud/!svn/ver/2279/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/service/BucketService.java
+END
+ZoneService.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/ruicloud/!svn/ver/2266/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/service/ZoneService.java
+END
+ObjectService.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/ruicloud/!svn/ver/2289/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/service/ObjectService.java
+END

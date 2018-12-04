@@ -1,0 +1,71 @@
+10
+
+dir
+3883
+http://192.168.31.144/svn/ruicloud/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados
+http://192.168.31.144/svn/ruicloud
+
+
+
+2018-07-05T02:45:02.839386Z
+2762
+leifan
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a06c885a-3c23-44de-8611-09e96204493f
+
+App.java
+file
+
+
+
+
+2018-08-13T03:42:23.834000Z
+6fb571bf127d3598ec0714c1f30f39ad
+2018-06-04T02:53:04.850794Z
+2231
+zhouyi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+559
+
+pojo
+dir
+
+service
+dir
+
+utils
+dir
+

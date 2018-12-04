@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/ruicloud/!svn/ver/3876/trunk/ruirados/src/main/resource
+END
+test-mybatis-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/ruicloud/!svn/ver/3259/trunk/ruirados/src/main/resource/test-mybatis-config.xml
+END
+mybatis-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ruicloud/!svn/ver/3974/trunk/ruirados/src/main/resource/mybatis-config.xml
+END
+boss-mybatis-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/boss-mybatis-config.xml
+END
+redis.properties
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/ruicloud/!svn/ver/3259/trunk/ruirados/src/main/resource/redis.properties
+END
+jdbc.properties
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/ruicloud/!svn/ver/3259/trunk/ruirados/src/main/resource/jdbc.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/ruicloud/!svn/ver/3270/trunk/ruirados/src/main/resource/log4j.properties
+END
+applicationContext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ruicloud/!svn/ver/3419/trunk/ruirados/src/main/resource/applicationContext.xml
+END
+dispatcher-servlet.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/ruicloud/!svn/ver/3030/trunk/ruirados/src/main/resource/dispatcher-servlet.xml
+END
+errorinfo.properties
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ruicloud/!svn/ver/2028/trunk/ruirados/src/main/resource/errorinfo.properties
+END
+spring-dao.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/ruicloud/!svn/ver/3971/trunk/ruirados/src/main/resource/spring-dao.xml
+END
+cloud-mybatis-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/ruicloud/!svn/ver/3419/trunk/ruirados/src/main/resource/cloud-mybatis-config.xml
+END
+spring-service.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ruicloud/!svn/ver/3971/trunk/ruirados/src/main/resource/spring-service.xml
+END
+ruirados.properties
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/ruicloud/!svn/ver/3699/trunk/ruirados/src/main/resource/ruirados.properties
+END

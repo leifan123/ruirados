@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssOperatelogDao">
+
+	<resultMap id="OssOperatelogMap" type="com.ruirados.pojo.OssOperatelog">
+		<id property="id" column="id" />
+		<result property="companyid" column="companyId" />
+		<result property="operator" column="operator" />
+		<result property="operatorip" column="operatorIp" />
+		<result property="operatetarget" column="operateTarget" />
+		<result property="operatetype" column="operateType" />
+		<result property="operatedes" column="operateDes" />
+		<result property="operatestatus" column="operateStatus" />
+		<result property="errormessage" column="errorMessage" />
+		<result property="operatortime" column="operatorTime" />
+		<result property="zoneid" column="zoneId" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssOperatelog">
+		insert into oss_operatelog
+		(companyId,operator,operatorIp,operateTarget,operateType,operateDes,operateStatus,errorMessage,operatorTime,zoneId,remark)
+		values(#{companyid},#{operator},#{operatorip},#{operatetarget},#{operatetype},#{operatedes},#{operatestatus},#{errormessage},#{operatortime},#{zoneid},#{remark})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssOperatelog">
+		update oss_operatelog
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="operator!=null">operator = #{operator},</if>
+			<if test="operatorip!=null">operatorIp = #{operatorip},</if>
+			<if test="operatetarget!=null">operateTarget = #{operatetarget},</if>
+			<if test="operatetype!=null">operateType = #{operatetype},</if>
+			<if test="operatedes!=null">operateDes = #{operatedes},</if>
+			<if test="operatestatus!=null">operateStatus = #{operatestatus},</if>
+			<if test="errormessage!=null">errorMessage = #{errormessage},</if>
+			<if test="operatortime!=null">operatorTime = #{operatortime},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssOperatelog">
+		delete from oss_operatelog where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="operator != null"> and operator = #{operator}</if>
+		<if test="operatorip != null"> and operatorIp = #{operatorip}</if>
+		<if test="operatetarget != null"> and operateTarget = #{operatetarget}</if>
+		<if test="operatetype != null"> and operateType = #{operatetype}</if>
+		<if test="operatedes != null"> and operateDes = #{operatedes}</if>
+		<if test="operatestatus != null"> and operateStatus = #{operatestatus}</if>
+		<if test="errormessage != null"> and errorMessage = #{errormessage}</if>
+		<if test="operatortime != null"> and operatorTime = #{operatortime}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="OssOperatelogMap" parameterType="com.ruirados.pojo.OssOperatelog">
+		select * from oss_operatelog where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="operator != null"> and operator = #{operator}</if>
+		<if test="operatorip != null"> and operatorIp = #{operatorip}</if>
+		<if test="operatetarget != null"> and operateTarget = #{operatetarget}</if>
+		<if test="operatetype != null"> and operateType = #{operatetype}</if>
+		<if test="operatedes != null"> and operateDes = #{operatedes}</if>
+		<if test="operatestatus != null"> and operateStatus = #{operatestatus}</if>
+		<if test="errormessage != null"> and errorMessage = #{errormessage}</if>
+		<if test="operatortime != null"> and operatorTime = #{operatortime}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+	<!-- order by operatortime desc -->
+	<select id="selectByParam" resultMap="OssOperatelogMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_operatelog
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<select id="selectCount" resultType="int" parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_operatelog
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_operatelog
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_operatelog set ${param}</if>
+	</update>
+
+	<select id="selectOperateTarget" resultType="java.lang.String"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_operatelog
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+</mapper>

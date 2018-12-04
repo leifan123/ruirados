@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssFluxPriceDao">
+
+	<resultMap id="OssFluxPriceMap" type="com.ruirados.pojo.OssFluxPrice">
+		<id property="id" column="id"/>
+		<result property="type" column="type"/>
+		<result property="year" column="year"/>
+		<result property="month" column="month"/>
+		<result property="week" column="week"/>
+		<result property="current" column="current"/>
+		<result property="zoneid" column="zoneId"/>
+		<result property="createtime" column="createTime"/>
+	</resultMap>
+
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.ruirados.pojo.OssFluxPrice">
+		insert into  oss_flux_price (type,year,month,week,current,zoneId,createTime) values(#{type},#{year},#{month},#{week},#{current},#{zoneid},#{createtime})	
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssFluxPrice">
+		update oss_flux_price
+		<set>
+			<if test="type!=null">type = #{type},</if>
+			<if test="year!=null">year = #{year},</if>
+			<if test="month!=null">month = #{month},</if>
+			<if test="week!=null">week = #{week},</if>
+			<if test="current!=null">current = #{current},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="createtime!=null">createTime = #{createtime}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssFluxPrice">
+		delete from oss_flux_price where 1=1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="type != null"> and type = #{type}</if>
+			<if test="year != null"> and year = #{year}</if>
+			<if test="month != null"> and month = #{month}</if>
+			<if test="week != null"> and week = #{week}</if>
+			<if test="current != null"> and current = #{current}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+	</delete>
+
+	<select id="select" resultMap="OssFluxPriceMap" parameterType="com.ruirados.pojo.OssFluxPrice">
+		select * from oss_flux_price where 1 = 1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="type != null"> and type = #{type}</if>
+			<if test="year != null"> and year = #{year}</if>
+			<if test="month != null"> and month = #{month}</if>
+			<if test="week != null"> and week = #{week}</if>
+			<if test="current != null"> and current = #{current}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssFluxPriceMap" parameterType="java.util.Map">
+		select  <if test="field != null and field != ''"> ${field}</if>  <if test="field == null or field == ''"> * </if>     from oss_flux_price <if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_flux_price  <if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_flux_price set ${param}</if>
+	</update>
+
+</mapper>

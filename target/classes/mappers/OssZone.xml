@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssZoneDao">
+
+	<resultMap id="OssZoneMap" type="com.ruirados.pojo.OssZone">
+		<id property="id" column="id" />
+		<result property="zoneid" column="zoneId" />
+		<result property="zonename" column="zoneName" />
+		<result property="serverip" column="serverIP" />
+		<result property="serverport" column="serverPort" />
+		<result property="apikey" column="apikey" />
+		<result property="secretkey" column="secretkey" />
+		<result property="zabbixurl" column="zabbixUrl" />
+		<result property="zabbixusername" column="zabbixUsername" />
+		<result property="zabbuxpassword" column="zabbuxPassword" />
+		<result property="zabbixauth" column="zabbixAuth" />
+		<result property="zabbixjsonrpc" column="zabbixJsonrpc" />
+		<result property="innerserverip" column="innerserverip" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssZone">
+		insert into oss_zone
+		(zoneId,zoneName,serverIP,serverPort,apikey,secretkey,zabbixUrl,zabbixUsername,zabbuxPassword,zabbixAuth,zabbixJsonrpc)
+		values(#{zoneid},#{zonename},#{serverip},#{serverport},#{apikey},#{secretkey},#{zabbixurl},#{zabbixusername},#{zabbuxpassword},#{zabbixauth},#{zabbixjsonrpc})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssZone">
+		update oss_zone
+		<set>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="zonename!=null">zoneName = #{zonename},</if>
+			<if test="serverip!=null">serverIP = #{serverip},</if>
+			<if test="serverport!=null">serverPort = #{serverport},</if>
+			<if test="apikey!=null">apikey = #{apikey},</if>
+			<if test="secretkey!=null">secretkey = #{secretkey},</if>
+			<if test="zabbixurl!=null">zabbixUrl = #{zabbixurl},</if>
+			<if test="zabbixusername!=null">zabbixUsername = #{zabbixusername},</if>
+			<if test="zabbuxpassword!=null">zabbuxPassword = #{zabbuxpassword},</if>
+			<if test="zabbixauth!=null">zabbixAuth = #{zabbixauth},</if>
+			<if test="zabbixjsonrpc!=null">zabbixJsonrpc = #{zabbixjsonrpc}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssZone">
+		delete from oss_zone where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="zonename != null"> and zoneName = #{zonename}</if>
+		<if test="serverip != null"> and serverIP = #{serverip}</if>
+		<if test="serverport != null"> and serverPort = #{serverport}</if>
+		<if test="apikey != null"> and apikey = #{apikey}</if>
+		<if test="secretkey != null"> and secretkey = #{secretkey}</if>
+		<if test="zabbixurl != null"> and zabbixUrl = #{zabbixurl}</if>
+		<if test="zabbixusername != null"> and zabbixUsername = #{zabbixusername}</if>
+		<if test="zabbuxpassword != null"> and zabbuxPassword = #{zabbuxpassword}</if>
+		<if test="zabbixauth != null"> and zabbixAuth = #{zabbixauth}</if>
+		<if test="zabbixjsonrpc != null"> and zabbixJsonrpc = #{zabbixjsonrpc}</if>
+	</delete>
+
+	<select id="select" resultMap="OssZoneMap" parameterType="com.ruirados.pojo.OssZone">
+		select * from oss_zone where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="zonename != null"> and zoneName = #{zonename}</if>
+		<if test="serverip != null"> and serverIP = #{serverip}</if>
+		<if test="serverport != null"> and serverPort = #{serverport}</if>
+		<if test="apikey != null"> and apikey = #{apikey}</if>
+		<if test="secretkey != null"> and secretkey = #{secretkey}</if>
+		<if test="zabbixurl != null"> and zabbixUrl = #{zabbixurl}</if>
+		<if test="zabbixusername != null"> and zabbixUsername = #{zabbixusername}</if>
+		<if test="zabbuxpassword != null"> and zabbuxPassword = #{zabbuxpassword}</if>
+		<if test="zabbixauth != null"> and zabbixAuth = #{zabbixauth}</if>
+		<if test="zabbixjsonrpc != null"> and zabbixJsonrpc = #{zabbixjsonrpc}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssZoneMap" parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_zone
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_zone
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_zone set ${param}</if>
+	</update>
+
+</mapper>

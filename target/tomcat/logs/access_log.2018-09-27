@@ -1,0 +1,9 @@
+192.168.3.234 - - [27/Sep/2018:14:17:28 +0800] "GET /ruirados/zone/zoneList.do HTTP/1.1" 200 58 http-bio-8083-exec-1 145
+192.168.3.234 - - [27/Sep/2018:14:17:28 +0800] "GET /ruirados/zone/defaultZone.do HTTP/1.1" 200 58 http-bio-8083-exec-2 144
+192.168.3.234 - - [27/Sep/2018:14:19:22 +0800] "GET /ruirados/zone/zoneList.do HTTP/1.1" 200 58 http-bio-8083-exec-5 3
+192.168.3.234 - - [27/Sep/2018:14:19:22 +0800] "GET /ruirados/zone/defaultZone.do HTTP/1.1" 200 58 http-bio-8083-exec-6 3
+192.168.3.234 - - [27/Sep/2018:20:19:54 +0800] "GET /ruirados/zone/zoneList.do HTTP/1.1" 200 58 http-bio-8083-exec-1 1209
+192.168.3.234 - - [27/Sep/2018:20:19:54 +0800] "GET /ruirados/zone/defaultZone.do HTTP/1.1" 200 58 http-bio-8083-exec-2 1209
+192.168.3.244 - - [27/Sep/2018:20:41:18 +0800] "POST /xrdomain/template/createTemple.do HTTP/1.1" 404 - http-bio-8083-exec-5 0
+192.168.3.244 - - [27/Sep/2018:20:41:31 +0800] "POST /xrdomain/template/createTemple.do HTTP/1.1" 404 - http-bio-8083-exec-6 0
+192.168.3.244 - - [27/Sep/2018:20:41:34 +0800] "POST /xrdomain/template/createTemple.do HTTP/1.1" 404 - http-bio-8083-exec-7 0

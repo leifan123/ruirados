@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- <settings name="cacheEnabled" value="true"/> -->
+	<mappers>
+		<mapper resource="mappers/OssAcl.xml" />
+		<mapper resource="mappers/OssBucket.xml" />
+		<mapper resource="mappers/OssObject.xml" />
+		<mapper resource="mappers/OssOperatelog.xml" />
+		<mapper resource="mappers/OssSyslog.xml" />
+		<mapper resource="mappers/OssUsedMonitor.xml" />
+		<mapper resource="mappers/OssZone.xml" />
+		<mapper resource="mappers/OssCors.xml" />
+		<mapper resource="mappers/OssUserDomain.xml" />
+		<mapper resource="mappers/OssMonitor.xml" />
+		<mapper resource="mappers/OssFlux.xml" />
+		<mapper resource="mappers/OssUserFlux.xml" />
+		<mapper resource="mappers/OssArrearage.xml"/>
+		<mapper resource="mappers/OssPicture.xml" />
+		<mapper resource="mappers/OssStatistics.xml"/>
+		<mapper resource="mappers/OssActivity.xml"/>
+		<mapper resource="mappers/OssFluxPrice.xml"/>
+
+	</mappers>
+</configuration>

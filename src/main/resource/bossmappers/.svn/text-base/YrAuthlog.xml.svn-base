@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.YrAuthlogDao">
+
+	<resultMap id="YrAuthlogMap" type="com.yunrui.pojo.YrAuthlog">
+		<id property="id" column="id" />
+		<result property="code" column="code" />
+		<result property="version" column="version" />
+		<result property="companyid" column="companyId" />
+		<result property="authtype" column="authType" />
+		<result property="name" column="name" />
+		<result property="linkmanname" column="linkmanName" />
+		<result property="trade" column="trade" />
+		<result property="personalnumber" column="personalNumber" />
+		<result property="phone" column="phone" />
+		<result property="cardfronturl" column="cardFrontURL" />
+		<result property="cardbakurl" column="cardBakURL" />
+		<result property="companycardurl" column="companyCardURL" />
+		<result property="businesslicense" column="businessLicense" />
+		<result property="organizationcode" column="organizationCode" />
+		<result property="taxregister" column="taxRegister" />
+		<result property="createtime" column="createTime" />
+		<result property="checkuserid" column="checkUserId" />
+		<result property="checkdate" column="checkDate" />
+		<result property="checkstatus" column="checkStatus" />
+		<result property="checkdesc" column="checkDesc" />
+		<result property="scale" column="scale" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.yunrui.pojo.YrAuthlog">
+		insert into yr_authlog
+		(code,version,companyId,authType,name,linkmanName,trade,personalNumber,phone,cardFrontURL,cardBakURL,companyCardURL,businessLicense,organizationCode,taxRegister,createTime,checkUserId,checkDate,checkStatus,checkDesc,scale)
+		values(#{code},#{version},#{companyid},#{authtype},#{name},#{linkmanname},#{trade},#{personalnumber},#{phone},#{cardfronturl},#{cardbakurl},#{companycardurl},#{businesslicense},#{organizationcode},#{taxregister},#{createtime},#{checkuserid},#{checkdate},#{checkstatus},#{checkdesc},#{scale})
+	</insert>
+
+	<update id="update" parameterType="com.yunrui.pojo.YrAuthlog">
+		update yr_authlog
+		<set>
+			<if test="code!=null">code = #{code},</if>
+			<if test="version!=null">version = #{version},</if>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="authtype!=null">authType = #{authtype},</if>
+			<if test="name!=null">name = #{name},</if>
+			<if test="linkmanname!=null">linkmanName = #{linkmanname},</if>
+			<if test="trade!=null">trade = #{trade},</if>
+			<if test="personalnumber!=null">personalNumber = #{personalnumber},</if>
+			<if test="phone!=null">phone = #{phone},</if>
+			<if test="cardfronturl!=null">cardFrontURL = #{cardfronturl},</if>
+			<if test="cardbakurl!=null">cardBakURL = #{cardbakurl},</if>
+			<if test="companycardurl!=null">companyCardURL = #{companycardurl},</if>
+			<if test="businesslicense!=null">businessLicense = #{businesslicense},</if>
+			<if test="organizationcode!=null">organizationCode = #{organizationcode},</if>
+			<if test="taxregister!=null">taxRegister = #{taxregister},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="checkuserid!=null">checkUserId = #{checkuserid},</if>
+			<if test="checkdate!=null">checkDate = #{checkdate},</if>
+			<if test="checkstatus!=null">checkStatus = #{checkstatus},</if>
+			<if test="checkdesc!=null">checkDesc = #{checkdesc},</if>
+			<if test="scale!=null">scale = #{scale}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.yunrui.pojo.YrAuthlog">
+		delete from yr_authlog where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="authtype != null"> and authType = #{authtype}</if>
+		<if test="name != null"> and name = #{name}</if>
+		<if test="linkmanname != null"> and linkmanName = #{linkmanname}</if>
+		<if test="trade != null"> and trade = #{trade}</if>
+		<if test="personalnumber != null"> and personalNumber = #{personalnumber}</if>
+		<if test="phone != null"> and phone = #{phone}</if>
+		<if test="cardfronturl != null"> and cardFrontURL = #{cardfronturl}</if>
+		<if test="cardbakurl != null"> and cardBakURL = #{cardbakurl}</if>
+		<if test="companycardurl != null"> and companyCardURL = #{companycardurl}</if>
+		<if test="businesslicense != null"> and businessLicense = #{businesslicense}</if>
+		<if test="organizationcode != null"> and organizationCode = #{organizationcode}</if>
+		<if test="taxregister != null"> and taxRegister = #{taxregister}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="checkuserid != null"> and checkUserId = #{checkuserid}</if>
+		<if test="checkdate != null"> and checkDate = #{checkdate}</if>
+		<if test="checkstatus != null"> and checkStatus = #{checkstatus}</if>
+		<if test="checkdesc != null"> and checkDesc = #{checkdesc}</if>
+		<if test="scale != null"> and scale = #{scale}</if>
+	</delete>
+
+	<select id="select" resultMap="YrAuthlogMap" parameterType="com.yunrui.pojo.YrAuthlog">
+		select * from yr_authlog where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="authtype != null"> and authType = #{authtype}</if>
+		<if test="name != null"> and name = #{name}</if>
+		<if test="linkmanname != null"> and linkmanName = #{linkmanname}</if>
+		<if test="trade != null"> and trade = #{trade}</if>
+		<if test="personalnumber != null"> and personalNumber = #{personalnumber}</if>
+		<if test="phone != null"> and phone = #{phone}</if>
+		<if test="cardfronturl != null"> and cardFrontURL = #{cardfronturl}</if>
+		<if test="cardbakurl != null"> and cardBakURL = #{cardbakurl}</if>
+		<if test="companycardurl != null"> and companyCardURL = #{companycardurl}</if>
+		<if test="businesslicense != null"> and businessLicense = #{businesslicense}</if>
+		<if test="organizationcode != null"> and organizationCode = #{organizationcode}</if>
+		<if test="taxregister != null"> and taxRegister = #{taxregister}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="checkuserid != null"> and checkUserId = #{checkuserid}</if>
+		<if test="checkdate != null"> and checkDate = #{checkdate}</if>
+		<if test="checkstatus != null"> and checkStatus = #{checkstatus}</if>
+		<if test="checkdesc != null"> and checkDesc = #{checkdesc}</if>
+		<if test="scale != null"> and scale = #{scale}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="YrAuthlogMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from yr_authlog
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from yr_authlog
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update yr_authlog set ${param}</if>
+	</update>
+</mapper>

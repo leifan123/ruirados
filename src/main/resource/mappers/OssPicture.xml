@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssPictureDao">
+
+	<resultMap id="OssPictureMap" type="com.ruirados.pojo.OssPicture">
+		<id property="id" column="id"/>
+		<result property="companyid" column="companyId"/>
+		<result property="cssname" column="cssName"/>
+		<result property="bucketname" column="bucketName"/>
+		<result property="resizertype" column="resizerType"/>
+		<result property="resizerpercent" column="resizerPercent"/>
+		<result property="width" column="width"/>
+		<result property="height" column="height"/>
+		<result property="outformattype" column="outFormatType"/>
+		<result property="outquality" column="outQuality"/>
+		<result property="waterprinttype" column="waterPrintType"/>
+		<result property="waterurl" column="waterURL"/>
+		<result property="wateroffsettype" column="waterOffsetType"/>
+		<result property="horizontaloff" column="horizontalOff"/>
+		<result property="verticaloff" column="verticalOff"/>
+		<result property="isprogressive" column="isProgressive"/>
+		<result property="rotatetype" column="rotateType"/>
+		<result property="rotationangle" column="rotationAngle"/>
+		<result property="zoneid" column="zoneId"/>
+		<result property="fontsize" column="fontSize"/>
+		<result property="text" column="text"/>
+		<result property="color" column="color"/>
+		<result property="thickness" column="thickness"/>
+		<result property="watermarktransparency" column="WatermarkTransparency"/>
+		<result property="font" column="font"/>
+		<result property="createTime" column="createTime"/>
+		<result property="endtime" column="endtime"/>
+	</resultMap>
+
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.ruirados.pojo.OssPicture">
+		insert into  oss_picture (companyId,cssName,bucketName,resizerType,resizerPercent,width,height,outFormatType,outQuality,waterPrintType,waterURL,waterOffsetType,horizontalOff,verticalOff,isProgressive,rotateType,rotationAngle,zoneId,fontSize,text,color,thickness,WatermarkTransparency,font,createTime,endtime) values(#{companyid},#{cssname},#{bucketname},#{resizertype},#{resizerpercent},#{width},#{height},#{outformattype},#{outquality},#{waterprinttype},#{waterurl},#{wateroffsettype},#{horizontaloff},#{verticaloff},#{isprogressive},#{rotatetype},#{rotationangle},#{zoneid},#{fontsize},#{text},#{color},#{thickness},#{watermarktransparency},#{font},#{createTime},#{endtime})	
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssPicture">
+		update oss_picture
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="cssname!=null">cssName = #{cssname},</if>
+			<if test="bucketname!=null">bucketName = #{bucketname},</if>
+			<if test="resizertype!=null">resizerType = #{resizertype},</if>
+			<if test="resizerpercent!=null">resizerPercent = #{resizerpercent},</if>
+			<if test="width!=null">width = #{width},</if>
+			<if test="height!=null">height = #{height},</if>
+			<if test="outformattype!=null">outFormatType = #{outformattype},</if>
+			<if test="outquality!=null">outQuality = #{outquality},</if>
+			<if test="waterprinttype!=null">waterPrintType = #{waterprinttype},</if>
+			<if test="waterurl!=null">waterURL = #{waterurl},</if>
+			<if test="wateroffsettype!=null">waterOffsetType = #{wateroffsettype},</if>
+			<if test="horizontaloff!=null">horizontalOff = #{horizontaloff},</if>
+			<if test="verticaloff!=null">verticalOff = #{verticaloff},</if>
+			<if test="isprogressive!=null">isProgressive = #{isprogressive},</if>
+			<if test="rotatetype!=null">rotateType = #{rotatetype},</if>
+			<if test="rotationangle!=null">rotationAngle = #{rotationangle},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="fontsize!=null">fontSize = #{fontsize},</if>
+			<if test="text!=null">text = #{text},</if>
+			<if test="color!=null">color = #{color},</if>
+			<if test="thickness!=null">thickness = #{thickness},</if>
+			<if test="watermarktransparency!=null">WatermarkTransparency = #{watermarktransparency},</if>
+			<if test="font!=null">font = #{font}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssPicture">
+		delete from oss_picture where 1=1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="cssname != null"> and cssName = #{cssname}</if>
+			<if test="bucketname != null"> and bucketName = #{bucketname}</if>
+			<if test="resizertype != null"> and resizerType = #{resizertype}</if>
+			<if test="resizerpercent != null"> and resizerPercent = #{resizerpercent}</if>
+			<if test="width != null"> and width = #{width}</if>
+			<if test="height != null"> and height = #{height}</if>
+			<if test="outformattype != null"> and outFormatType = #{outformattype}</if>
+			<if test="outquality != null"> and outQuality = #{outquality}</if>
+			<if test="waterprinttype != null"> and waterPrintType = #{waterprinttype}</if>
+			<if test="waterurl != null"> and waterURL = #{waterurl}</if>
+			<if test="wateroffsettype != null"> and waterOffsetType = #{wateroffsettype}</if>
+			<if test="horizontaloff != null"> and horizontalOff = #{horizontaloff}</if>
+			<if test="verticaloff != null"> and verticalOff = #{verticaloff}</if>
+			<if test="isprogressive != null"> and isProgressive = #{isprogressive}</if>
+			<if test="rotatetype != null"> and rotateType = #{rotatetype}</if>
+			<if test="rotationangle != null"> and rotationAngle = #{rotationangle}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="fontsize != null"> and fontSize = #{fontsize}</if>
+			<if test="text != null"> and text = #{text}</if>
+			<if test="color != null"> and color = #{color}</if>
+			<if test="thickness != null"> and thickness = #{thickness}</if>
+			<if test="watermarktransparency != null"> and WatermarkTransparency = #{watermarktransparency}</if>
+			<if test="font != null"> and font = #{font}</if>
+	</delete>
+
+	<select id="select" resultMap="OssPictureMap" parameterType="com.ruirados.pojo.OssPicture">
+		select * from oss_picture where 1 = 1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="cssname != null"> and cssName = #{cssname}</if>
+			<if test="bucketname != null"> and bucketName = #{bucketname}</if>
+			<if test="resizertype != null"> and resizerType = #{resizertype}</if>
+			<if test="resizerpercent != null"> and resizerPercent = #{resizerpercent}</if>
+			<if test="width != null"> and width = #{width}</if>
+			<if test="height != null"> and height = #{height}</if>
+			<if test="outformattype != null"> and outFormatType = #{outformattype}</if>
+			<if test="outquality != null"> and outQuality = #{outquality}</if>
+			<if test="waterprinttype != null"> and waterPrintType = #{waterprinttype}</if>
+			<if test="waterurl != null"> and waterURL = #{waterurl}</if>
+			<if test="wateroffsettype != null"> and waterOffsetType = #{wateroffsettype}</if>
+			<if test="horizontaloff != null"> and horizontalOff = #{horizontaloff}</if>
+			<if test="verticaloff != null"> and verticalOff = #{verticaloff}</if>
+			<if test="isprogressive != null"> and isProgressive = #{isprogressive}</if>
+			<if test="rotatetype != null"> and rotateType = #{rotatetype}</if>
+			<if test="rotationangle != null"> and rotationAngle = #{rotationangle}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="fontsize != null"> and fontSize = #{fontsize}</if>
+			<if test="text != null"> and text = #{text}</if>
+			<if test="color != null"> and color = #{color}</if>
+			<if test="thickness != null"> and thickness = #{thickness}</if>
+			<if test="watermarktransparency != null"> and WatermarkTransparency = #{watermarktransparency}</if>
+			<if test="font != null"> and font = #{font}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssPictureMap" parameterType="java.util.Map">
+		select  <if test="field != null and field != ''"> ${field}</if>  <if test="field == null or field == ''"> * </if>     from oss_picture <if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_picture  <if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_picture set ${param}</if>
+	</update>
+	
+	<delete id="batchRemove">
+		delete from oss_picture where id in oss_picture
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
+
+
+
+	

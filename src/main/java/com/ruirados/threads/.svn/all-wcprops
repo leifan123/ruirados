@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/ruicloud/!svn/ver/3502/trunk/ruirados/src/main/java/com/ruirados/threads
+END
+SynBucketCapacityRunnable.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/ruicloud/!svn/ver/3502/trunk/ruirados/src/main/java/com/ruirados/threads/SynBucketCapacityRunnable.java
+END
+SynUserAccessKeyRunnable.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/ruicloud/!svn/ver/3417/trunk/ruirados/src/main/java/com/ruirados/threads/SynUserAccessKeyRunnable.java
+END
+DestroyBucketRunnable.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/ruicloud/!svn/ver/3176/trunk/ruirados/src/main/java/com/ruirados/threads/DestroyBucketRunnable.java
+END

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<mappers>
+		<mapper resource="cloudmappers/UserAccess.xml" />
+		<mapper resource="cloudmappers/UserCoreAccess.xml" />
+		<mapper resource="cloudmappers/Getfreevminformation.xml" />
+		<mapper resource="cloudmappers/UserTypeSource.xml" />
+		<mapper resource="cloudmappers/CustomMonitorIndex.xml"/>
+		<mapper resource="cloudmappers/PandectCustomMonitorIndex.xml"/>
+		<mapper resource="cloudmappers/PandectbigCustomMonitorIndex.xml"/>
+	</mappers>
+</configuration>

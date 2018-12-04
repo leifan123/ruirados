@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssUsedMonitorDao">
+
+	<resultMap id="OssUsedMonitorMap" type="com.ruirados.pojo.OssUsedMonitor">
+		<id property="id" column="id" />
+		<result property="code" column="code" />
+		<result property="companyid" column="companyId" />
+		<result property="version" column="version" />
+		<result property="isdisplay" column="isDisplay" />
+		<result property="downloadflow" column="downloadFlow" />
+		<result property="getrequest" column="getRequest" />
+		<result property="putrequest" column="putRequest" />
+		<result property="bucketId" column="bucket_id" />
+		<result property="bucketname" column="bucketName" />
+		<result property="zoneid" column="zoneId" />
+		<result property="data" column="data" />
+		<result property="updatetime" column="updateTime" />
+		<result property="state" column="state" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssUsedMonitor">
+		insert into oss_used_monitor
+		(code,companyId,version,isDisplay,downloadFlow,getRequest,putRequest,bucket_id,bucketName,zoneId,data,updateTime,state,remark)
+		values(#{code},#{companyid},#{version},#{isdisplay},#{downloadflow},#{getrequest},#{putrequest},#{bucketId},#{bucketname},#{zoneid},#{data},#{updatetime},#{state},#{remark})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssUsedMonitor">
+		update oss_used_monitor
+		<set>
+			<if test="code!=null">code = #{code},</if>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="version!=null">version = #{version},</if>
+			<if test="isdisplay!=null">isDisplay = #{isdisplay},</if>
+			<if test="downloadflow!=null">downloadFlow = #{downloadflow},</if>
+			<if test="getrequest!=null">getRequest = #{getrequest},</if>
+			<if test="putrequest!=null">putRequest = #{putrequest},</if>
+			<if test="bucketId!=null">bucket_id = #{bucketId},</if>
+			<if test="bucketname!=null">bucketName = #{bucketname},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="data!=null">data = #{data},</if>
+			<if test="updatetime!=null">updateTime = #{updatetime},</if>
+			<if test="state!=null">state = #{state},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssUsedMonitor">
+		delete from oss_used_monitor where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="downloadflow != null"> and downloadFlow = #{downloadflow}</if>
+		<if test="getrequest != null"> and getRequest = #{getrequest}</if>
+		<if test="putrequest != null"> and putRequest = #{putrequest}</if>
+		<if test="bucketId != null"> and bucket_id = #{bucketId}</if>
+		<if test="bucketname != null"> and bucketName = #{bucketname}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="data != null"> and data = #{data}</if>
+		<if test="updatetime != null"> and updateTime = #{updatetime}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="OssUsedMonitorMap" parameterType="com.ruirados.pojo.OssUsedMonitor">
+		select * from oss_used_monitor where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="downloadflow != null"> and downloadFlow = #{downloadflow}</if>
+		<if test="getrequest != null"> and getRequest = #{getrequest}</if>
+		<if test="putrequest != null"> and putRequest = #{putrequest}</if>
+		<if test="bucketId != null"> and bucket_id = #{bucketId}</if>
+		<if test="bucketname != null"> and bucketName = #{bucketname}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="data != null"> and data = #{data}</if>
+		<if test="updatetime != null"> and updateTime = #{updatetime}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssUsedMonitorMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_used_monitor
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_used_monitor
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_used_monitor set ${param}</if>
+	</update>
+
+</mapper>

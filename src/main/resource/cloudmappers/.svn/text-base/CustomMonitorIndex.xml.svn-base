@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.CustomMonitorIndexDao">
+
+	<resultMap id="CustomMonitorIndexMap" type="com.ruirados.pojo.CustomMonitorIndex">
+		<id property="id" column="id"/>
+		<result property="companyid" column="companyId"/>
+		<result property="producttype" column="productType"/>
+		<result property="indexs" column="indexs"/>
+		<result property="computerid" column="computerId"/>
+		<result property="diskid" column="diskId"/>
+		<result property="vpcid" column="vpcId"/>
+		<result property="objectstorageid" column="objectStorageId"/>
+		<result property="type" column="type"/>
+		<result property="zoneid" column="zoneId"/>
+	</resultMap>
+
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.ruirados.pojo.CustomMonitorIndex">
+		insert into  custom_monitor_index (companyId,productType,indexs,computerId,diskId,vpcId,objectStorageId,type,zoneId) values(#{companyid},#{producttype},#{indexs},#{computerid},#{diskid},#{vpcid},#{objectstorageid},#{type},#{zoneid})	
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.CustomMonitorIndex">
+		update custom_monitor_index
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="producttype!=null">productType = #{producttype},</if>
+			<if test="indexs!=null">indexs = #{indexs},</if>
+			<if test="computerid!=null">computerId = #{computerid},</if>
+			<if test="diskid!=null">diskId = #{diskid},</if>
+			<if test="vpcid!=null">vpcId = #{vpcid},</if>
+			<if test="objectstorageid!=null">objectStorageId = #{objectstorageid},</if>
+			<if test="type!=null">type = #{type},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.CustomMonitorIndex">
+		delete from custom_monitor_index where 1=1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="producttype != null"> and productType = #{producttype}</if>
+			<if test="indexs != null"> and indexs = #{indexs}</if>
+			<if test="computerid != null"> and computerId = #{computerid}</if>
+			<if test="diskid != null"> and diskId = #{diskid}</if>
+			<if test="vpcid != null"> and vpcId = #{vpcid}</if>
+			<if test="objectstorageid != null"> and objectStorageId = #{objectstorageid}</if>
+			<if test="type != null"> and type = #{type}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+	</delete>
+
+	<select id="select" resultMap="CustomMonitorIndexMap" parameterType="com.ruirados.pojo.CustomMonitorIndex">
+		select * from custom_monitor_index where 1 = 1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="producttype != null"> and productType = #{producttype}</if>
+			<if test="indexs != null"> and indexs = #{indexs}</if>
+			<if test="computerid != null"> and computerId = #{computerid}</if>
+			<if test="diskid != null"> and diskId = #{diskid}</if>
+			<if test="vpcid != null"> and vpcId = #{vpcid}</if>
+			<if test="objectstorageid != null"> and objectStorageId = #{objectstorageid}</if>
+			<if test="type != null"> and type = #{type}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="CustomMonitorIndexMap" parameterType="java.util.Map">
+		select  <if test="field != null and field != ''"> ${field}</if>  <if test="field == null or field == ''"> * </if>     from custom_monitor_index <if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from custom_monitor_index  <if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update custom_monitor_index set ${param}</if>
+	</update>
+
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssAclDao">
+
+	<resultMap id="OssAclMap" type="com.ruirados.pojo.OssAcl">
+		<id property="id" column="id" />
+		<result property="code" column="code" />
+		<result property="companyid" column="companyId" />
+		<result property="bucketId" column="bucket_id" />
+		<result property="zoneid" column="zoneId" />
+		<result property="version" column="version" />
+		<result property="isdisplay" column="isDisplay" />
+		<result property="userauthorization" column="userAuthorization" />
+		<result property="putobject" column="putObject" />
+		<result property="getobject" column="getObject" />
+		<result property="deleteobject" column="deleteObject" />
+		<result property="listbucket" column="listBucket" />
+		<result property="deletebucket" column="deleteBucket" />
+		<result property="resource" column="resource" />
+		<result property="iseffectres" column="isEffectRes" />
+		<result property="refererip" column="refererIp" />
+		<result property="iseffectrefip" column="isEffectRefIp" />
+		<result property="state" column="state" />
+		<result property="createtime" column="createTime" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssAcl">
+		insert into oss_acl
+		(code,companyId,bucket_id,zoneId,version,isDisplay,userAuthorization,putObject,getObject,deleteObject,listBucket,deleteBucket,resource,isEffectRes,refererIp,isEffectRefIp,state,createTime,remark)
+		values(#{code},#{companyid},#{bucketId},#{zoneid},#{version},#{isdisplay},#{userauthorization},#{putobject},#{getobject},#{deleteobject},#{listbucket},#{deletebucket},#{resource},#{iseffectres},#{refererip},#{iseffectrefip},#{state},#{createtime},#{remark})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssAcl">
+		update oss_acl
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="bucketId!=null">bucket_id = #{bucketId},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="version!=null">version = #{version},</if>
+			<if test="isdisplay!=null">isDisplay = #{isdisplay},</if>
+			<if test="userauthorization!=null">userAuthorization = #{userauthorization},</if>
+			<if test="putobject!=null">putObject = #{putobject},</if>
+			<if test="getobject!=null">getObject = #{getobject},</if>
+			<if test="deleteobject!=null">deleteObject = #{deleteobject},</if>
+			<if test="listbucket!=null">listBucket = #{listbucket},</if>
+			<if test="deletebucket!=null">deleteBucket = #{deletebucket},</if>
+			<if test="resource!=null">resource = #{resource},</if>
+			<if test="iseffectres!=null">isEffectRes = #{iseffectres},</if>
+			<if test="refererip!=null">refererIp = #{refererip},</if>
+			<if test="iseffectrefip!=null">isEffectRefIp = #{iseffectrefip},</if>
+			<if test="state!=null">state = #{state},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		<if test="code!=null">where code = #{code}</if>
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssAcl">
+		delete from oss_acl where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="bucketId != null"> and bucket_id = #{bucketId}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="userauthorization != null"> and userAuthorization = #{userauthorization}</if>
+		<if test="putobject != null"> and putObject = #{putobject}</if>
+		<if test="getobject != null"> and getObject = #{getobject}</if>
+		<if test="deleteobject != null"> and deleteObject = #{deleteobject}</if>
+		<if test="listbucket != null"> and listBucket = #{listbucket}</if>
+		<if test="deletebucket != null"> and deleteBucket = #{deletebucket}</if>
+		<if test="resource != null"> and resource = #{resource}</if>
+		<if test="iseffectres != null"> and isEffectRes = #{iseffectres}</if>
+		<if test="refererip != null"> and refererIp = #{refererip}</if>
+		<if test="iseffectrefip != null"> and isEffectRefIp = #{iseffectrefip}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="OssAclMap" parameterType="com.ruirados.pojo.OssAcl">
+		select * from oss_acl where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="bucketId != null"> and bucket_id = #{bucketId}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="userauthorization != null"> and userAuthorization = #{userauthorization}</if>
+		<if test="putobject != null"> and putObject = #{putobject}</if>
+		<if test="getobject != null"> and getObject = #{getobject}</if>
+		<if test="deleteobject != null"> and deleteObject = #{deleteobject}</if>
+		<if test="listbucket != null"> and listBucket = #{listbucket}</if>
+		<if test="deletebucket != null"> and deleteBucket = #{deletebucket}</if>
+		<if test="resource != null"> and resource = #{resource}</if>
+		<if test="iseffectres != null"> and isEffectRes = #{iseffectres}</if>
+		<if test="refererip != null"> and refererIp = #{refererip}</if>
+		<if test="iseffectrefip != null"> and isEffectRefIp = #{iseffectrefip}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssAclMap" parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_acl
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<select id="selectCount" resultType="int" parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_acl
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_acl
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_acl set ${param}</if>
+	</update>
+
+</mapper>

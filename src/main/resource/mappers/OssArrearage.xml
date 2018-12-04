@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssArrearageDao">
+
+	<resultMap id="OssArrearageMap" type="com.ruirados.pojo.OssArrearage">
+		<id property="id" column="id"/>
+		<result property="code" column="code"/>
+		<result property="companyid" column="companyId"/>
+		<result property="version" column="version"/>
+		<result property="storeCapacity" column="store_capacity"/>
+		<result property="capacityPrice" column="capacity_price"/>
+		<result property="traffic" column="traffic"/>
+		<result property="trafficPrice" column="traffic_price"/>
+		<result property="requesttimes" column="requestTimes"/>
+		<result property="timesPrice" column="times_price"/>
+		<result property="state" column="state"/>
+		<result property="createtime" column="createTime"/>
+		<result property="remark" column="remark"/>
+	</resultMap>
+
+	<insert id="insert"  useGeneratedKeys="true" keyProperty="id"  parameterType="com.ruirados.pojo.OssArrearage">
+		insert into  oss_arrearage (code,companyId,version,store_capacity,capacity_price,traffic,traffic_price,requestTimes,times_price,state,createTime,remark) values(#{code},#{companyid},#{version},#{storeCapacity},#{capacityPrice},#{traffic},#{trafficPrice},#{requesttimes},#{timesPrice},#{state},#{createtime},#{remark})	
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssArrearage">
+		update oss_arrearage
+		<set>
+			<if test="code!=null">code = #{code},</if>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="version!=null">version = #{version},</if>
+			<if test="storeCapacity!=null">store_capacity = #{storeCapacity},</if>
+			<if test="capacityPrice!=null">capacity_price = #{capacityPrice},</if>
+			<if test="traffic!=null">traffic = #{traffic},</if>
+			<if test="trafficPrice!=null">traffic_price = #{trafficPrice},</if>
+			<if test="requesttimes!=null">requestTimes = #{requesttimes},</if>
+			<if test="timesPrice!=null">times_price = #{timesPrice},</if>
+			<if test="state!=null">state = #{state},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssArrearage">
+		delete from oss_arrearage where 1=1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="code != null"> and code = #{code}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="version != null"> and version = #{version}</if>
+			<if test="storeCapacity != null"> and store_capacity = #{storeCapacity}</if>
+			<if test="capacityPrice != null"> and capacity_price = #{capacityPrice}</if>
+			<if test="traffic != null"> and traffic = #{traffic}</if>
+			<if test="trafficPrice != null"> and traffic_price = #{trafficPrice}</if>
+			<if test="requesttimes != null"> and requestTimes = #{requesttimes}</if>
+			<if test="timesPrice != null"> and times_price = #{timesPrice}</if>
+			<if test="state != null"> and state = #{state}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+			<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="OssArrearageMap" parameterType="com.ruirados.pojo.OssArrearage">
+		select * from oss_arrearage where 1 = 1
+			<if test="id != null"> and id = #{id}</if>
+			<if test="code != null"> and code = #{code}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="version != null"> and version = #{version}</if>
+			<if test="storeCapacity != null"> and store_capacity = #{storeCapacity}</if>
+			<if test="capacityPrice != null"> and capacity_price = #{capacityPrice}</if>
+			<if test="traffic != null"> and traffic = #{traffic}</if>
+			<if test="trafficPrice != null"> and traffic_price = #{trafficPrice}</if>
+			<if test="requesttimes != null"> and requestTimes = #{requesttimes}</if>
+			<if test="timesPrice != null"> and times_price = #{timesPrice}</if>
+			<if test="state != null"> and state = #{state}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+			<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssArrearageMap" parameterType="java.util.Map">
+		select  <if test="field != null and field != ''"> ${field}</if>  <if test="field == null or field == ''"> * </if>     from oss_arrearage <if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_arrearage  <if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_arrearage set ${param}</if>
+	</update>
+
+</mapper>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.UserAccessDao">
+
+	<resultMap id="UserAccessMap" type="com.ruirados.pojo.UserAccess">
+		<id property="id" column="id" />
+		<result property="companyid" column="companyId" />
+		<result property="userid" column="userId" />
+		<result property="accesskeyid" column="accessKeyID" />
+		<result property="accesskeysecret" column="accessKeySecret" />
+		<result property="status" column="status" />
+		<result property="createtime" column="createTime" />
+		<result property="isdisplay" column="isdisplay" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.UserAccess">
+		insert into user_access
+		(companyId,userId,accessKeyID,accessKeySecret,status,createTime,isdisplay,remark)
+		values(#{companyid},#{userid},#{accesskeyid},#{accesskeysecret},#{status},#{createtime},#{isdisplay},#{remark})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.UserAccess">
+		update user_access
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="userid!=null">userId = #{userid},</if>
+			<if test="accesskeyid!=null">accessKeyID = #{accesskeyid},</if>
+			<if test="accesskeysecret!=null">accessKeySecret = #{accesskeysecret},</if>
+			<if test="status!=null">status = #{status},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="isdisplay!=null">isdisplay = #{isdisplay},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.UserAccess">
+		delete from user_access where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="userid != null"> and userId = #{userid}</if>
+		<if test="accesskeyid != null"> and accessKeyID = #{accesskeyid}</if>
+		<if test="accesskeysecret != null"> and accessKeySecret = #{accesskeysecret}</if>
+		<if test="status != null"> and status = #{status}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="isdisplay != null"> and isdisplay = #{isdisplay}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="UserAccessMap" parameterType="com.ruirados.pojo.UserAccess">
+		select * from user_access where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="userid != null"> and userId = #{userid}</if>
+		<if test="accesskeyid != null"> and accessKeyID = #{accesskeyid}</if>
+		<if test="accesskeysecret != null"> and accessKeySecret = #{accesskeysecret}</if>
+		<if test="status != null"> and status = #{status}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="isdisplay != null"> and isdisplay = #{isdisplay}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="UserAccessMap"
+		parameterType="java.util.Map">
+		select distinct
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from user_access
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<select id="countByParam" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		select count(*) from user_access
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from user_access
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update user_access set ${param}</if>
+	</update>
+
+</mapper>

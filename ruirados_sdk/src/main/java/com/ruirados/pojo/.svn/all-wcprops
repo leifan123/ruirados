@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ruicloud/!svn/ver/2762/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo
+END
+UserAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/UserAccess.java
+END
+OssOperatelog.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/OssOperatelog.java
+END
+UserCoreAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/UserCoreAccess.java
+END
+OssObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2762/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/OssObject.java
+END
+OssUsedMonitor.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/OssUsedMonitor.java
+END
+ReqData.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/ReqData.java
+END
+OssSyslog.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/OssSyslog.java
+END
+BasicRuiradosNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/BasicRuiradosNode.java
+END
+YrAuthlog.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/YrAuthlog.java
+END
+OssZone.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/OssZone.java
+END
+BasicRuiradosCredentials.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/BasicRuiradosCredentials.java
+END
+OssAcl.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/OssAcl.java
+END
+OssBucket.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/OssBucket.java
+END
+RspData.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/RspData.java
+END
+YrComper.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/YrComper.java
+END
+UserAuth.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/ruicloud/!svn/ver/2231/trunk/ruirados/ruirados_sdk/src/main/java/com/ruirados/pojo/UserAuth.java
+END

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssUserFluxDao">
+
+	<resultMap id="OssUserFluxMap" type="com.ruirados.pojo.OssUserFlux">
+		<id property="id" column="id"/>
+		<result property="companyid" column="companyId"/>
+		<result property="fluxId" column="flux_id"/>
+		<result property="expiretime" column="expireTime"/>
+		<result property="originprice" column="originPrice"/>
+		<result property="realprice" column="realPrice"/>
+		<result property="zoneid" column="zoneId"/>
+		<result property="createtime" column="createTime"/>
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssUserFlux">
+		insert into  oss_user_flux (companyId,flux_id,expireTime,originPrice,realPrice,zoneId,createTime) values(#{companyid},#{fluxId},#{expiretime},#{originprice},#{realprice},#{zoneid},#{createtime})	
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssUserFlux">
+		update oss_user_flux
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="fluxId!=null">flux_id = #{fluxId},</if>
+			<if test="expiretime!=null">expireTime = #{expiretime},</if>
+			<if test="originprice!=null">originPrice = #{originprice},</if>
+			<if test="realprice!=null">realPrice = #{realprice},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="createtime!=null">createTime = #{createtime}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssUserFlux">
+		delete from oss_user_flux where 1=1
+		<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="fluxId != null"> and flux_id = #{fluxId}</if>
+			<if test="expiretime != null"> and expireTime = #{expiretime}</if>
+			<if test="originprice != null"> and originPrice = #{originprice}</if>
+			<if test="realprice != null"> and realPrice = #{realprice}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+	</delete>
+
+	<select id="select" resultMap="OssUserFluxMap" parameterType="com.ruirados.pojo.OssUserFlux">
+		select * from oss_user_flux where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+			<if test="companyid != null"> and companyId = #{companyid}</if>
+			<if test="fluxId != null"> and flux_id = #{fluxId}</if>
+			<if test="expiretime != null"> and expireTime = #{expiretime}</if>
+			<if test="originprice != null"> and originPrice = #{originprice}</if>
+			<if test="realprice != null"> and realPrice = #{realprice}</if>
+			<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+			<if test="createtime != null"> and createTime = #{createtime}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssUserFluxMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_user_flux
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_user_flux
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_user_flux set ${param}</if>
+	</update>
+
+</mapper>

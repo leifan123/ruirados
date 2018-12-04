@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/ruicloud/!svn/ver/3672/trunk/ruirados/src/test/java/com/test
+END
+CORSTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ruicloud/!svn/ver/3216/trunk/ruirados/src/test/java/com/test/CORSTest.java
+END
+CephPolicyTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/ruicloud/!svn/ver/2014/trunk/ruirados/src/test/java/com/test/CephPolicyTest.java
+END
+S3Sample.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/ruicloud/!svn/ver/2014/trunk/ruirados/src/test/java/com/test/S3Sample.java
+END
+CephFSTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ruicloud/!svn/ver/3672/trunk/ruirados/src/test/java/com/test/CephFSTest.java
+END
+CephGetUrl.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/ruicloud/!svn/ver/3025/trunk/ruirados/src/test/java/com/test/CephGetUrl.java
+END
+CephTestCreateUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/ruicloud/!svn/ver/3216/trunk/ruirados/src/test/java/com/test/CephTestCreateUser.java
+END

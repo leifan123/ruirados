@@ -1,0 +1,201 @@
+package com.ruirados.controller;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.twonote.rgwadmin4j.RgwAdmin;
+
+import com.ruirados.pojo.OssActivity;
+import com.ruirados.pojo.OssFlux;
+import com.ruirados.pojo.OssUserFlux;
+import com.ruirados.pojo.OssZone;
+import com.ruirados.pojo.RspData;
+import com.ruirados.service.OssActivityService;
+import com.ruirados.service.OssFluxService;
+import com.ruirados.service.OssUserFluxService;
+import com.ruirados.service.OssZoneService;
+import com.ruirados.util.ApiTool;
+import com.ruirados.util.Config;
+import com.ruirados.util.ExptNum;
+import com.ruirados.util.GetResult;
+import com.ruirados.util.GlobalAttr;
+import com.ruirados.util.JSONUtils;
+import com.ruirados.util.MappingConfigura;
+import com.ruirados.util.ParamIsNull;
+
+@Controller
+@RequestMapping(MappingConfigura.FLUX)
+public class FluxController {
+	
+	@Autowired
+	private OssFluxService fluxService;
+	
+	@Autowired
+	private OssUserFluxService userFluxService;
+	
+	@Autowired
+	private OssZoneService ossZoneService;
+	
+	@Autowired
+	private OssActivityService activityService;
+	
+	Logger log = Logger.getLogger(getClass());
+
+	/**
+	 * ceph扩容
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="ruiradosDilatation", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	public void ruiradosDilatation(HttpServletRequest request, String size, String zoneId, String companyId) throws Exception{
+		Map<String, RgwAdmin> rgwAdminMap = GlobalAttr.getInstance().getRgwAdminMap();
+		RgwAdmin rgwAdmin = rgwAdminMap.get(zoneId);
+		
+		rgwAdmin.setUserQuota(companyId, rgwAdmin.getUserQuota(companyId).get().getMaxObjects(), 
+				rgwAdmin.getUserQuota(companyId).get().getMaxSizeKb() + Long.parseLong(size));
+	}
+	
+	/**
+	 * 设置用户配额
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="increaseFlux", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String increaseFlux(HttpServletRequest request) throws Exception{
+		
+		Map<String, String> maps = ApiTool.getBodyString(request);
+		RspData rd = new RspData();
+		
+		String zoneId = "39a6af0b-6624-4194-b9d5-0c552d903858";
+		
+		// 参数完整性判断
+		if (!ParamIsNull.isNull(zoneId)) {
+			rd.setStatus(GetResult.ERROR_STATUS + "");
+			rd.setMsg(Config.REQUEST_Param_IS_NULL);
+			return JSONUtils.createObjectJson(rd);
+		}
+		
+		String companyId = ApiTool.getUserMsg(request).getCompanyid();
+		
+		//判断套餐是否存在
+		List<OssFlux> userFluxList = fluxService.selectByParam(null, "name='领取50G流量包' and companyId = '" + companyId +  "'" );
+		
+		List<OssZone> zones = ossZoneService.select(new OssZone().setZoneid(zoneId));
+		
+		try{
+			if(userFluxList.size() != 0){
+				rd.setStatus(ExptNum.JUST_GET_ONE.getCode() + "");
+				rd.setMsg(ExptNum.JUST_GET_ONE.getDesc());
+				return JSONUtils.createObjectJson(rd);
+			}
+		}	catch (Exception e) {
+			log.error(e);
+			rd.setStatus(ExptNum.JUST_GET_ONE.getCode() + "");
+			rd.setMsg(ExptNum.JUST_GET_ONE.getDesc());
+			return JSONUtils.createObjectJson(rd);
+		}
+		
+//		Map<String, RgwAdmin> rgwAdminMap = GlobalAttr.getInstance().getRgwAdminMap();
+//		RgwAdmin rgwAdmin = rgwAdminMap.get(zoneId);
+		
+//		if(fluxList.size() > 0){
+//			rgwAdmin.setUserQuota(companyId, rgwAdmin.getUserQuota(companyId).get().getMaxObjects(), 
+//					rgwAdmin.getUserQuota(companyId).get().getMaxSizeKb() + (fluxList.get(0).getSize() * 1048576));
+//		}
+		
+		// 系统当前时间
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");// 设置日期格式
+		Date date1 = new Date();
+		String str = df.format(date1);
+		date1 = df.parse(str);
+		
+		OssFlux flux = new OssFlux();
+		flux.setZoneid(zoneId);
+		flux.setStatus(1);
+		flux.setCreatetime(df.parse(df.format(new Date())));
+		flux.setTimetype(3);
+		
+		flux.setName("领取50G流量包");
+		flux.setSize(50);
+		flux.setType(3);
+		flux.setExpiredays(30);
+		flux.setPrice((float) 0);
+		
+		flux.setOriginprice(0);
+		flux.setRealprice(0);
+		
+		Calendar calendar1 = Calendar.getInstance();
+		calendar1.set(Calendar.MONTH, calendar1.get(Calendar.MONTH) + 1);
+		Date expiretime = calendar1.getTime();
+		
+		flux.setExpiretime(expiretime);
+		flux.setCompanyid(companyId);
+		fluxService.insert(flux);
+		
+		rd.setStatus(ExptNum.GET_SUCCESS.getCode() + "");
+		rd.setMsg(ExptNum.GET_SUCCESS.getDesc());
+		return JSONUtils.createObjectJson(rd);
+	}
+	
+	/**
+	 * 获取所有流量包
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="getFluxs", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String getFluxs(HttpServletRequest request) throws Exception{
+		RspData rd = new RspData();
+		String companyId = ApiTool.getUserMsg(request).getCompanyid();
+		List<OssFlux> fulxList = fluxService.select(new OssFlux().setCompanyid(companyId));
+		
+		for(OssFlux ossFlux : fulxList){
+			ossFlux.setStatus(2);
+		}
+		
+		Map<String, Object> maps = new HashMap<String, Object>();
+		maps.put("fulxList", fulxList);
+		rd.setStatus(ExptNum.SUCCESS.getCode() + "");
+		rd.setMsg(ExptNum.SUCCESS.getDesc());
+		rd.setData(maps);
+		return JSONUtils.createObjectJson(rd);
+	}
+	
+	/**
+	 * 获取活动包
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="getActivity", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String getActivity(HttpServletRequest request) throws Exception{
+		RspData rd = new RspData();
+		List<OssActivity> activityList = activityService.select(null);
+		
+		Map<String, Object> maps = new HashMap<String, Object>();
+		maps.put("activityList", activityList);
+		
+		rd.setStatus(ExptNum.SUCCESS.getCode() + "");
+		rd.setMsg(ExptNum.SUCCESS.getDesc());
+		rd.setData(maps);
+		return JSONUtils.createObjectJson(rd);
+	}
+
+}

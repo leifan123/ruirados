@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.YrComperDao">
+
+	<resultMap id="YrComperMap" type="com.ruirados.pojo.YrComper">
+		<id property="id" column="id" />
+		<result property="code" column="code" />
+		<result property="version" column="version" />
+		<result property="datastatus" column="dataStatus" />
+		<result property="isdisplay" column="isDisplay" />
+		<result property="remark" column="remark" />
+		<result property="createtime" column="createTime" />
+		<result property="lasttime" column="lastTime" />
+		<result property="companyid" column="companyId" />
+		<result property="loginname" column="loginName" />
+		<result property="md5pwd" column="md5Pwd" />
+		<result property="realname" column="realName" />
+		<result property="gender" column="gender" />
+		<result property="status" column="status" />
+		<result property="isdirector" column="isDirector" />
+		<result property="lastdate" column="lastDate" />
+		<result property="lastip" column="lastIP" />
+		<result property="predate" column="preDate" />
+		<result property="preip" column="preIP" />
+		<result property="registerip" column="registerIp" />
+		<result property="roleid" column="roleID" />
+		<result property="avatar" column="Avatar" />
+		<result property="country" column="country" />
+		<result property="province" column="province" />
+		<result property="city" column="city" />
+		<result property="address" column="address" />
+		<result property="phone" column="phone" />
+		<result property="mobile" column="mobile" />
+		<result property="personalauth" column="personalAuth" />
+		<result property="companyauth" column="companyAuth" />
+		<result property="smsauth" column="smsAuth" />
+		<result property="emailauth" column="emailAuth" />
+		<result property="createsrc" column="createSrc" />
+		<result property="accountid" column="accountId" />
+		<result property="question1" column="question1" />
+		<result property="answer1" column="answer1" />
+		<result property="question2" column="question2" />
+		<result property="answer2" column="answer2" />
+		<result property="question3" column="question3" />
+		<result property="answer3" column="answer3" />
+		<result property="paytype" column="PayType" />
+		<result property="issmsalart" column="isSmsAlart" />
+		<result property="isemailalart" column="isEmailAlart" />
+		<result property="defaultzoneid" column="defaultZoneId" />
+		<result property="defaultzonename" column="defaultZoneName" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.YrComper">
+		insert into yr_comper
+		(code,version,dataStatus,isDisplay,remark,createTime,lastTime,companyId,loginName,md5Pwd,realName,gender,status,isDirector,lastDate,lastIP,preDate,preIP,registerIp,roleID,Avatar,country,province,city,address,phone,mobile,personalAuth,companyAuth,smsAuth,emailAuth,createSrc,accountId,question1,answer1,question2,answer2,question3,answer3,PayType,isSmsAlart,isEmailAlart,defaultZoneId,defaultZoneName)
+		values(#{code},#{version},#{datastatus},#{isdisplay},#{remark},#{createtime},#{lasttime},#{companyid},#{loginname},#{md5pwd},#{realname},#{gender},#{status},#{isdirector},#{lastdate},#{lastip},#{predate},#{preip},#{registerip},#{roleid},#{avatar},#{country},#{province},#{city},#{address},#{phone},#{mobile},#{personalauth},#{companyauth},#{smsauth},#{emailauth},#{createsrc},#{accountid},#{question1},#{answer1},#{question2},#{answer2},#{question3},#{answer3},#{paytype},#{issmsalart},#{isemailalart},#{defaultzoneid},#{defaultzonename})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.YrComper">
+		update yr_comper
+		<set>
+			<if test="code!=null">code = #{code},</if>
+			<if test="version!=null">version = #{version},</if>
+			<if test="datastatus!=null">dataStatus = #{datastatus},</if>
+			<if test="isdisplay!=null">isDisplay = #{isdisplay},</if>
+			<if test="remark!=null">remark = #{remark},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="lasttime!=null">lastTime = #{lasttime},</if>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="loginname!=null">loginName = #{loginname},</if>
+			<if test="md5pwd!=null">md5Pwd = #{md5pwd},</if>
+			<if test="realname!=null">realName = #{realname},</if>
+			<if test="gender!=null">gender = #{gender},</if>
+			<if test="status!=null">status = #{status},</if>
+			<if test="isdirector!=null">isDirector = #{isdirector},</if>
+			<if test="lastdate!=null">lastDate = #{lastdate},</if>
+			<if test="lastip!=null">lastIP = #{lastip},</if>
+			<if test="predate!=null">preDate = #{predate},</if>
+			<if test="preip!=null">preIP = #{preip},</if>
+			<if test="registerip!=null">registerIp = #{registerip},</if>
+			<if test="roleid!=null">roleID = #{roleid},</if>
+			<if test="avatar!=null">Avatar = #{avatar},</if>
+			<if test="country!=null">country = #{country},</if>
+			<if test="province!=null">province = #{province},</if>
+			<if test="city!=null">city = #{city},</if>
+			<if test="address!=null">address = #{address},</if>
+			<if test="phone!=null">phone = #{phone},</if>
+			<if test="mobile!=null">mobile = #{mobile},</if>
+			<if test="personalauth!=null">personalAuth = #{personalauth},</if>
+			<if test="companyauth!=null">companyAuth = #{companyauth},</if>
+			<if test="smsauth!=null">smsAuth = #{smsauth},</if>
+			<if test="emailauth!=null">emailAuth = #{emailauth},</if>
+			<if test="createsrc!=null">createSrc = #{createsrc},</if>
+			<if test="accountid!=null">accountId = #{accountid},</if>
+			<if test="question1!=null">question1 = #{question1},</if>
+			<if test="answer1!=null">answer1 = #{answer1},</if>
+			<if test="question2!=null">question2 = #{question2},</if>
+			<if test="answer2!=null">answer2 = #{answer2},</if>
+			<if test="question3!=null">question3 = #{question3},</if>
+			<if test="answer3!=null">answer3 = #{answer3},</if>
+			<if test="paytype!=null">PayType = #{paytype},</if>
+			<if test="issmsalart!=null">isSmsAlart = #{issmsalart},</if>
+			<if test="isemailalart!=null">isEmailAlart = #{isemailalart},</if>
+			<if test="defaultzoneid!=null">defaultZoneId = #{defaultzoneid},</if>
+			<if test="defaultzonename!=null">defaultZoneName = #{defaultzonename}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.YrComper">
+		delete from yr_comper where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="datastatus != null"> and dataStatus = #{datastatus}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="loginname != null"> and loginName = #{loginname}</if>
+		<if test="md5pwd != null"> and md5Pwd = #{md5pwd}</if>
+		<if test="realname != null"> and realName = #{realname}</if>
+		<if test="gender != null"> and gender = #{gender}</if>
+		<if test="status != null"> and status = #{status}</if>
+		<if test="isdirector != null"> and isDirector = #{isdirector}</if>
+		<if test="lastdate != null"> and lastDate = #{lastdate}</if>
+		<if test="lastip != null"> and lastIP = #{lastip}</if>
+		<if test="predate != null"> and preDate = #{predate}</if>
+		<if test="preip != null"> and preIP = #{preip}</if>
+		<if test="registerip != null"> and registerIp = #{registerip}</if>
+		<if test="roleid != null"> and roleID = #{roleid}</if>
+		<if test="avatar != null"> and Avatar = #{avatar}</if>
+		<if test="country != null"> and country = #{country}</if>
+		<if test="province != null"> and province = #{province}</if>
+		<if test="city != null"> and city = #{city}</if>
+		<if test="address != null"> and address = #{address}</if>
+		<if test="phone != null"> and phone = #{phone}</if>
+		<if test="mobile != null"> and mobile = #{mobile}</if>
+		<if test="personalauth != null"> and personalAuth = #{personalauth}</if>
+		<if test="companyauth != null"> and companyAuth = #{companyauth}</if>
+		<if test="smsauth != null"> and smsAuth = #{smsauth}</if>
+		<if test="emailauth != null"> and emailAuth = #{emailauth}</if>
+		<if test="createsrc != null"> and createSrc = #{createsrc}</if>
+		<if test="accountid != null"> and accountId = #{accountid}</if>
+		<if test="question1 != null"> and question1 = #{question1}</if>
+		<if test="answer1 != null"> and answer1 = #{answer1}</if>
+		<if test="question2 != null"> and question2 = #{question2}</if>
+		<if test="answer2 != null"> and answer2 = #{answer2}</if>
+		<if test="question3 != null"> and question3 = #{question3}</if>
+		<if test="answer3 != null"> and answer3 = #{answer3}</if>
+		<if test="paytype != null"> and PayType = #{paytype}</if>
+		<if test="issmsalart != null"> and isSmsAlart = #{issmsalart}</if>
+		<if test="isemailalart != null"> and isEmailAlart = #{isemailalart}</if>
+		<if test="defaultzoneid != null"> and defaultZoneId = #{defaultzoneid}</if>
+		<if test="defaultzonename != null"> and defaultZoneName = #{defaultzonename}</if>
+	</delete>
+
+	<select id="select" resultMap="YrComperMap" parameterType="com.ruirados.pojo.YrComper">
+		select * from yr_comper where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="datastatus != null"> and dataStatus = #{datastatus}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="loginname != null"> and loginName = #{loginname}</if>
+		<if test="md5pwd != null"> and md5Pwd = #{md5pwd}</if>
+		<if test="realname != null"> and realName = #{realname}</if>
+		<if test="gender != null"> and gender = #{gender}</if>
+		<if test="status != null"> and status = #{status}</if>
+		<if test="isdirector != null"> and isDirector = #{isdirector}</if>
+		<if test="lastdate != null"> and lastDate = #{lastdate}</if>
+		<if test="lastip != null"> and lastIP = #{lastip}</if>
+		<if test="predate != null"> and preDate = #{predate}</if>
+		<if test="preip != null"> and preIP = #{preip}</if>
+		<if test="registerip != null"> and registerIp = #{registerip}</if>
+		<if test="roleid != null"> and roleID = #{roleid}</if>
+		<if test="avatar != null"> and Avatar = #{avatar}</if>
+		<if test="country != null"> and country = #{country}</if>
+		<if test="province != null"> and province = #{province}</if>
+		<if test="city != null"> and city = #{city}</if>
+		<if test="address != null"> and address = #{address}</if>
+		<if test="phone != null"> and phone = #{phone}</if>
+		<if test="mobile != null"> and mobile = #{mobile}</if>
+		<if test="personalauth != null"> and personalAuth = #{personalauth}</if>
+		<if test="companyauth != null"> and companyAuth = #{companyauth}</if>
+		<if test="smsauth != null"> and smsAuth = #{smsauth}</if>
+		<if test="emailauth != null"> and emailAuth = #{emailauth}</if>
+		<if test="createsrc != null"> and createSrc = #{createsrc}</if>
+		<if test="accountid != null"> and accountId = #{accountid}</if>
+		<if test="question1 != null"> and question1 = #{question1}</if>
+		<if test="answer1 != null"> and answer1 = #{answer1}</if>
+		<if test="question2 != null"> and question2 = #{question2}</if>
+		<if test="answer2 != null"> and answer2 = #{answer2}</if>
+		<if test="question3 != null"> and question3 = #{question3}</if>
+		<if test="answer3 != null"> and answer3 = #{answer3}</if>
+		<if test="paytype != null"> and PayType = #{paytype}</if>
+		<if test="issmsalart != null"> and isSmsAlart = #{issmsalart}</if>
+		<if test="isemailalart != null"> and isEmailAlart = #{isemailalart}</if>
+		<if test="defaultzoneid != null"> and defaultZoneId = #{defaultzoneid}</if>
+		<if test="defaultzonename != null"> and defaultZoneName = #{defaultzonename}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="YrComperMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from yr_comper
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from yr_comper
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update yr_comper set ${param}</if>
+	</update>
+
+</mapper>

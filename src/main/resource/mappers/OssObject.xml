@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.OssObjectDao">
+
+	<resultMap id="OssObjectMap" type="com.ruirados.pojo.OssObject">
+		<id property="id" column="id" />
+		<result property="code" column="code" />
+		<result property="companyid" column="companyId" />
+		<result property="version" column="version" />
+		<result property="isdisplay" column="isDisplay" />
+		<result property="filename" column="fileName" />
+		<result property="filesrc" column="fileSrc" />
+		<result property="filetype" column="fileType" />
+		<result property="filesize" column="fileSize" />
+		<result property="isfile" column="isfile" />
+		<result property="fId" column="f_id" />
+		<result property="bucketId" column="bucket_id" />
+		<result property="bucketName" column="bucket_name" />
+		<result property="zoneid" column="zoneId" />
+		<result property="createtime" column="createTime" />
+		<result property="lasttime" column="lastTime" />
+		<result property="accessrights" column="accessRights" />
+		<result property="state" column="state" />
+		<result property="remark" column="remark" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.OssObject">
+		insert into oss_object
+		(code,companyId,version,isDisplay,fileName,fileSrc,fileType,fileSize,isfile,f_id,bucket_id,bucket_name,zoneId,createTime,lastTime,accessRights,state,remark)
+		values(#{code},#{companyid},#{version},#{isdisplay},#{filename},#{filesrc},#{filetype},#{filesize},#{isfile},#{fId},#{bucketId},#{bucketName},#{zoneid},#{createtime},#{lasttime},#{accessrights},#{state},#{remark})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.OssObject">
+		update oss_object
+		<set>
+			<if test="code!=null">code = #{code},</if>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="version!=null">version = #{version},</if>
+			<if test="isdisplay!=null">isDisplay = #{isdisplay},</if>
+			<if test="filename!=null">fileName = #{filename},</if>
+			<if test="filesrc!=null">fileSrc = #{filesrc},</if>
+			<if test="filetype!=null">fileType = #{filetype},</if>
+			<if test="filesize!=null">fileSize = #{filesize},</if>
+			<if test="isfile!=null">isfile = #{isfile},</if>
+			<if test="fId!=null">f_id = #{fId},</if>
+			<if test="bucketId!=null">bucket_id = #{bucketId},</if>
+			<if test="bucketName!=null">bucket_name = #{bucketName},</if>
+			<if test="zoneid!=null">zoneId = #{zoneid},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="lasttime!=null">lastTime = #{lasttime},</if>
+			<if test="accessrights!=null">accessRights = #{accessrights},</if>
+			<if test="state!=null">state = #{state},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.OssObject">
+		delete from oss_object where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="filename != null"> and fileName = #{filename}</if>
+		<if test="filesrc != null"> and fileSrc = #{filesrc}</if>
+		<if test="filetype != null"> and fileType = #{filetype}</if>
+		<if test="filesize != null"> and fileSize = #{filesize}</if>
+		<if test="isfile != null"> and isfile = #{isfile}</if>
+		<if test="fId != null"> and f_id = #{fId}</if>
+		<if test="bucketId != null"> and bucket_id = #{bucketId}</if>
+		<if test="bucketName != null"> and bucket_name = #{bucketName}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="accessrights != null"> and accessRights = #{accessrights}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</delete>
+
+	<select id="select" resultMap="OssObjectMap" parameterType="com.ruirados.pojo.OssObject">
+		select * from oss_object where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="code != null"> and code = #{code}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="version != null"> and version = #{version}</if>
+		<if test="isdisplay != null"> and isDisplay = #{isdisplay}</if>
+		<if test="filename != null"> and fileName = #{filename}</if>
+		<if test="filesrc != null"> and fileSrc = #{filesrc}</if>
+		<if test="filetype != null"> and fileType = #{filetype}</if>
+		<if test="filesize != null"> and fileSize = #{filesize}</if>
+		<if test="isfile != null"> and isfile = #{isfile}</if>
+		<if test="fId != null"> and f_id = #{fId}</if>
+		<if test="bucketId != null"> and bucket_id = #{bucketId}</if>
+		<if test="bucketName != null"> and bucket_name = #{bucketName}</if>
+		<if test="zoneid != null"> and zoneId = #{zoneid}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="lasttime != null"> and lastTime = #{lasttime}</if>
+		<if test="accessrights != null"> and accessRights = #{accessrights}</if>
+		<if test="state != null"> and state = #{state}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="OssObjectMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_object
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<select id="selectByfileName" resultType="java.lang.Double"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from oss_object
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from oss_object
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update oss_object set ${param}</if>
+	</update>
+
+
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- boss -->
+	<bean id="YrComperDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="bosssqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.YrComperDao" />
+	</bean>
+
+	<bean id="YrAuthlogDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="bosssqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.YrAuthlogDao" />
+	</bean>
+
+
+
+	<!-- cloud -->
+	<bean id="UserAccessDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="cloudsqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.UserAccessDao" />
+	</bean>
+	
+	<bean id="PandectCustomMonitorIndexDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="sqlSessionFactory" ref="cloudsqlSessionFactory" />  
+ 		<property name="mapperInterface" value="com.ruirados.dao.PandectCustomMonitorIndexDao" /> 
+ 	</bean>
+
+	<bean id="PandectbigCustomMonitorIndexDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="sqlSessionFactory" ref="cloudsqlSessionFactory" />  
+ 		<property name="mapperInterface" value="com.ruirados.dao.PandectbigCustomMonitorIndexDao" /> 
+ 	</bean>
+	
+	<bean id="CustomMonitorIndexDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="sqlSessionFactory" ref="cloudsqlSessionFactory" />  
+ 		<property name="mapperInterface" value="com.ruirados.dao.CustomMonitorIndexDao" /> 
+ 	</bean>
+
+	<bean id="UserCoreAccessDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="cloudsqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.UserCoreAccessDao" />
+	</bean>
+	<bean id="GetfreevminformationDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="cloudsqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.GetfreevminformationDao" />
+	</bean>
+	<bean id="UserTypeSourceDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="cloudsqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.UserTypeSourceDao" />
+	</bean>
+	<!-- oss -->
+	<bean id="OssAclDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssAclDao" />
+	</bean>
+
+	<bean id="OssBucketDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssBucketDao" />
+	</bean>
+
+	<bean id="OssObjectDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssObjectDao" />
+	</bean>
+
+	<bean id="OssOperatelogDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssOperatelogDao" />
+	</bean>
+
+	<bean id="OssSyslogDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssSyslogDao" />
+	</bean>
+
+	<bean id="OssUsedMonitorDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssUsedMonitorDao" />
+	</bean>
+
+	<bean id="OssZoneDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssZoneDao" />
+	</bean>
+
+	<!-- bucket -->
+	<bean id="OssActivityDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+ 		<property name="mapperInterface" value="com.ruirados.dao.OssActivityDao" /> 
+ 	</bean>
+
+	<bean id="OssFluxPriceDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+ 		<property name="mapperInterface" value="com.ruirados.dao.OssFluxPriceDao" /> 
+ 	</bean>
+
+	<bean id="ossBucketDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssBucketDao" />
+	</bean>
+	
+	<bean id="OssArrearageDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+ 		<property name="mapperInterface" value="com.ruirados.dao.OssArrearageDao" /> 
+ 	</bean>
+
+	<bean id="OssCorsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssCorsDao" />
+	</bean>
+
+	<bean id="OssUserDomainDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssUserDomainDao" />
+	</bean>
+
+	<bean id="OssMonitorDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssMonitorDao" />
+	</bean>
+
+	<bean id="OssFluxDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssFluxDao" />
+	</bean>
+
+	<bean id="OssUserFluxDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssUserFluxDao" />
+	</bean>
+
+	<bean id="OssPictureDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.ruirados.dao.OssPictureDao" />
+	</bean>
+
+
+	
+	<!-- test -->
+	<bean id="Test1Dao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="sqlSessionFactory" ref="testsqlSessionFactory" />  
+ 		<property name="mapperInterface" value="com.ruirados.dao.Test1Dao" /> 
+ 	</bean>
+	
+	<bean id="OssStatisticsDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+ 		<property name="mapperInterface" value="com.ruirados.dao.OssStatisticsDao" /> 
+ 	</bean>
+
+</beans>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ruirados.dao.UserCoreAccessDao">
+
+	<resultMap id="UserCoreAccessMap" type="com.ruirados.pojo.UserCoreAccess">
+		<id property="id" column="id" />
+		<result property="companyid" column="companyId" />
+		<result property="userid" column="userId" />
+		<result property="cephcustomdomain" column="cephCustomDomain" />
+		<result property="cephaccesskeyid" column="cephAccessKeyID" />
+		<result property="cephaccesskeysecret" column="cephAccessKeySecret" />
+		<result property="apiaccesskeyid" column="apiAccessKeyID" />
+		<result property="apiaccesskeysecret" column="apiAccessKeySecret" />
+		<result property="dbaccesskeyid" column="dbAccessKeyID" />
+		<result property="dbaccesskeysecret" column="dbAccessKeySecret" />
+		<result property="rk1accesskeyid" column="rk1AccessKeyID" />
+		<result property="rk1accesskeysecret" column="rk1AccessKeySecret" />
+		<result property="rk2accesskeyid" column="rk2AccessKeyID" />
+		<result property="rk2accesskeysecret" column="rk2AccessKeySecret" />
+		<result property="rk3accesskeyid" column="rk3AccessKeyID" />
+		<result property="rk3accesskeysecret" column="rk3AccessKeySecret" />
+		<result property="protocol" column="protocol" />
+		<result property="status" column="status" />
+		<result property="createtime" column="createTime" />
+		<result property="remark" column="remark" />
+		<result property="flowsize" column="flowSize" />
+		<result property="flowPackage" column="flowPackage" />
+		<result property="capacityPackage" column="capacityPackage" />
+		<result property="requesttimes" column="requestTimes" />
+	</resultMap>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.ruirados.pojo.UserCoreAccess">
+		insert into user_core_access
+		(companyId,userId,cephCustomDomain,cephAccessKeyID,cephAccessKeySecret,apiAccessKeyID,apiAccessKeySecret,dbAccessKeyID,dbAccessKeySecret,rk1AccessKeyID,rk1AccessKeySecret,rk2AccessKeyID,rk2AccessKeySecret,rk3AccessKeyID,rk3AccessKeySecret,protocol,status,createTime,remark,flowSize,flowPackage,capacityPackage,requestTimes)
+		values(#{companyid},#{userid},#{cephcustomdomain},#{cephaccesskeyid},#{cephaccesskeysecret},#{apiaccesskeyid},#{apiaccesskeysecret},#{dbaccesskeyid},#{dbaccesskeysecret},#{rk1accesskeyid},#{rk1accesskeysecret},#{rk2accesskeyid},#{rk2accesskeysecret},#{rk3accesskeyid},#{rk3accesskeysecret},#{protocol},#{status},#{createtime},#{remark},#{flowsize},#{flowPackage},#{capacityPackage},#{requesttimes})
+	</insert>
+
+	<update id="update" parameterType="com.ruirados.pojo.UserCoreAccess">
+		update user_core_access
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="userid!=null">userId = #{userid},</if>
+			<if test="cephcustomdomain!=null">cephCustomDomain = #{cephcustomdomain},</if>
+			<if test="cephaccesskeyid!=null">cephAccessKeyID = #{cephaccesskeyid},</if>
+			<if test="cephaccesskeysecret!=null">cephAccessKeySecret = #{cephaccesskeysecret},</if>
+			<if test="apiaccesskeyid!=null">apiAccessKeyID = #{apiaccesskeyid},</if>
+			<if test="apiaccesskeysecret!=null">apiAccessKeySecret = #{apiaccesskeysecret},</if>
+			<if test="dbaccesskeyid!=null">dbAccessKeyID = #{dbaccesskeyid},</if>
+			<if test="dbaccesskeysecret!=null">dbAccessKeySecret = #{dbaccesskeysecret},</if>
+			<if test="rk1accesskeyid!=null">rk1AccessKeyID = #{rk1accesskeyid},</if>
+			<if test="rk1accesskeysecret!=null">rk1AccessKeySecret = #{rk1accesskeysecret},</if>
+			<if test="rk2accesskeyid!=null">rk2AccessKeyID = #{rk2accesskeyid},</if>
+			<if test="rk2accesskeysecret!=null">rk2AccessKeySecret = #{rk2accesskeysecret},</if>
+			<if test="rk3accesskeyid!=null">rk3AccessKeyID = #{rk3accesskeyid},</if>
+			<if test="rk3accesskeysecret!=null">rk3AccessKeySecret = #{rk3accesskeysecret},</if>
+			<if test="protocol!=null">protocol = #{protocol},</if>
+			<if test="status!=null">status = #{status},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="remark!=null">remark = #{remark},</if>
+			<if test="flowsize!=null">flowSize = #{flowsize},</if>
+			<if test="flowPackage!=null">flowPackage = #{flowPackage},</if>
+			<if test="capacityPackage">capacityPackage = #{capacityPackage},</if>
+			<if test="requesttimes!=null">requestTimes = #{requesttimes}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<update id="updateByCompanyId" parameterType="com.ruirados.pojo.UserCoreAccess">
+		update user_core_access
+		<set>
+			<if test="companyid!=null">companyId = #{companyid},</if>
+			<if test="userid!=null">userId = #{userid},</if>
+			<if test="cephaccesskeyid!=null">cephAccessKeyID = #{cephaccesskeyid},</if>
+			<if test="cephaccesskeysecret!=null">cephAccessKeySecret = #{cephaccesskeysecret},</if>
+			<if test="apiaccesskeyid!=null">apiAccessKeyID = #{apiaccesskeyid},</if>
+			<if test="apiaccesskeysecret!=null">apiAccessKeySecret = #{apiaccesskeysecret},</if>
+			<if test="dbaccesskeyid!=null">dbAccessKeyID = #{dbaccesskeyid},</if>
+			<if test="dbaccesskeysecret!=null">dbAccessKeySecret = #{dbaccesskeysecret},</if>
+			<if test="rk1accesskeyid!=null">rk1AccessKeyID = #{rk1accesskeyid},</if>
+			<if test="rk1accesskeysecret!=null">rk1AccessKeySecret = #{rk1accesskeysecret},</if>
+			<if test="rk2accesskeyid!=null">rk2AccessKeyID = #{rk2accesskeyid},</if>
+			<if test="rk2accesskeysecret!=null">rk2AccessKeySecret = #{rk2accesskeysecret},</if>
+			<if test="rk3accesskeyid!=null">rk3AccessKeyID = #{rk3accesskeyid},</if>
+			<if test="rk3accesskeysecret!=null">rk3AccessKeySecret = #{rk3accesskeysecret},</if>
+			<if test="protocol != null">protocol = #{protocol},</if>
+			<if test="status!=null">status = #{status},</if>
+			<if test="createtime!=null">createTime = #{createtime},</if>
+			<if test="remark!=null">remark = #{remark}</if>
+		</set>
+		where companyId = #{companyid}
+	</update>
+
+	<delete id="delete" parameterType="com.ruirados.pojo.UserCoreAccess">
+		delete from user_core_access where 1=1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="userid != null"> and userId = #{userid}</if>
+		<if test="cephcustomdomain != null"> and cephCustomDomain = #{cephcustomdomain}</if>
+		<if test="cephaccesskeyid != null"> and cephAccessKeyID = #{cephaccesskeyid}</if>
+		<if test="cephaccesskeysecret != null"> and cephAccessKeySecret = #{cephaccesskeysecret}</if>
+		<if test="apiaccesskeyid != null"> and apiAccessKeyID = #{apiaccesskeyid}</if>
+		<if test="apiaccesskeysecret != null"> and apiAccessKeySecret = #{apiaccesskeysecret}</if>
+		<if test="dbaccesskeyid != null"> and dbAccessKeyID = #{dbaccesskeyid}</if>
+		<if test="dbaccesskeysecret != null"> and dbAccessKeySecret = #{dbaccesskeysecret}</if>
+		<if test="rk1accesskeyid != null"> and rk1AccessKeyID = #{rk1accesskeyid}</if>
+		<if test="rk1accesskeysecret != null"> and rk1AccessKeySecret = #{rk1accesskeysecret}</if>
+		<if test="rk2accesskeyid != null"> and rk2AccessKeyID = #{rk2accesskeyid}</if>
+		<if test="rk2accesskeysecret != null"> and rk2AccessKeySecret = #{rk2accesskeysecret}</if>
+		<if test="rk3accesskeyid != null"> and rk3AccessKeyID = #{rk3accesskeyid}</if>
+		<if test="rk3accesskeysecret != null"> and rk3AccessKeySecret = #{rk3accesskeysecret}</if>
+		<if test="protocol != null"> and protocol = #{protocol}</if>
+		<if test="status != null"> and status = #{status}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+		<if test="flowsize != null"> and flowSize = #{flowsize}</if>
+		<if test="flowPackage!=null"> and flowPackage = #{flowPackage}</if>
+			<if test="capacityPackage"> and capacityPackage = #{capacityPackage}</if>
+		<if test="requesttimes != null"> and requestTimes = #{requesttimes}</if>
+	</delete>
+
+	<select id="select" resultMap="UserCoreAccessMap" parameterType="com.ruirados.pojo.UserCoreAccess">
+		select * from user_core_access where 1 = 1
+		<if test="id != null"> and id = #{id}</if>
+		<if test="companyid != null"> and companyId = #{companyid}</if>
+		<if test="userid != null"> and userId = #{userid}</if>
+		<if test="cephcustomdomain != null"> and cephCustomDomain = #{cephcustomdomain}</if>
+		<if test="cephaccesskeyid != null"> and cephAccessKeyID = #{cephaccesskeyid}</if>
+		<if test="cephaccesskeysecret != null"> and cephAccessKeySecret = #{cephaccesskeysecret}</if>
+		<if test="apiaccesskeyid != null"> and apiAccessKeyID = #{apiaccesskeyid}</if>
+		<if test="apiaccesskeysecret != null"> and apiAccessKeySecret = #{apiaccesskeysecret}</if>
+		<if test="dbaccesskeyid != null"> and dbAccessKeyID = #{dbaccesskeyid}</if>
+		<if test="dbaccesskeysecret != null"> and dbAccessKeySecret = #{dbaccesskeysecret}</if>
+		<if test="rk1accesskeyid != null"> and rk1AccessKeyID = #{rk1accesskeyid}</if>
+		<if test="rk1accesskeysecret != null"> and rk1AccessKeySecret = #{rk1accesskeysecret}</if>
+		<if test="rk2accesskeyid != null"> and rk2AccessKeyID = #{rk2accesskeyid}</if>
+		<if test="rk2accesskeysecret != null"> and rk2AccessKeySecret = #{rk2accesskeysecret}</if>
+		<if test="rk3accesskeyid != null"> and rk3AccessKeyID = #{rk3accesskeyid}</if>
+		<if test="rk3accesskeysecret != null"> and rk3AccessKeySecret = #{rk3accesskeysecret}</if>
+		<if test="protocol != null"> and protocol = #{protocol}</if>
+		<if test="status != null"> and status = #{status}</if>
+		<if test="createtime != null"> and createTime = #{createtime}</if>
+		<if test="remark != null"> and remark = #{remark}</if>
+		<if test="flowsize != null"> and flowSize = #{flowsize}</if>
+		<if test="flowPackage!=null"> and flowPackage = #{flowPackage}</if>
+			<if test="capacityPackage"> and capacityPackage = #{capacityPackage}</if>
+		<if test="requesttimes != null"> and requestTimes = #{requesttimes}</if>
+	</select>
+
+	<select id="selectByParam" resultMap="UserCoreAccessMap"
+		parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from user_core_access
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+	<delete id="deleteByParam" parameterType="java.util.Map">
+		delete from user_core_access
+		<if test="param != null and param != ''">where ${param}</if>
+	</delete>
+
+	<update id="updateByParam" parameterType="java.util.Map">
+		<if test="param != null and param !=''">update user_core_access set ${param}</if>
+	</update>
+
+	<select id="selectCountByparam" resultType="int" parameterType="java.util.Map">
+		select
+		<if test="field != null and field != ''"> ${field}</if>
+		<if test="field == null or field == ''"> * </if>
+		from user_core_access
+		<if test="param != null and param != ''">where ${param}</if>
+	</select>
+
+</mapper>

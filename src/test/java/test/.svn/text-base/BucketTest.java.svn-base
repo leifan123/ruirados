@@ -1,0 +1,57 @@
+package test;
+
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.ruirados.controller.BucketController;
+
+public class BucketTest {
+	
+	/*protected static ApplicationContext ctx;
+	
+	@BeforeClass
+	public static void setup() {
+		String[] resources = { "classpath*:applicationContext.xml" };
+		ctx = new ClassPathXmlApplicationContext(resources);
+	}*/
+	
+	@Test
+	public void test1() throws Exception{
+		List<String> list = new LinkedList<>();
+		Queue<String> queue = new LinkedList<String>();
+		list.add("150899743737");
+		list.add("testbangbang");
+		list.add("estbangbang2");
+		list.add("estbangbang3");
+		list.add("estbangbang4");
+		list.add("estbangbang5");
+		list.add("152473657611");
+		list.add("152387420111");
+		for(int i = 0; i< list.size(); i++){
+			try{
+				Long.parseLong(list.get(i));
+				queue.offer(list.get(i));
+			}	catch (Exception e) {
+				list.remove(list.get(i));
+				i--;
+			}
+		}
+		System.out.println(queue.size());
+	}
+}

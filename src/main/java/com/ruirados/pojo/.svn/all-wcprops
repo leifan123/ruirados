@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/ruicloud/!svn/ver/3882/trunk/ruirados/src/main/java/com/ruirados/pojo
+END
+UserAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ruicloud/!svn/ver/2411/trunk/ruirados/src/main/java/com/ruirados/pojo/UserAccess.java
+END
+AmazonCacheBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/ruicloud/!svn/ver/2305/trunk/ruirados/src/main/java/com/ruirados/pojo/AmazonCacheBean.java
+END
+OssObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/ruicloud/!svn/ver/3017/trunk/ruirados/src/main/java/com/ruirados/pojo/OssObject.java
+END
+OssMonitor.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ruicloud/!svn/ver/2826/trunk/ruirados/src/main/java/com/ruirados/pojo/OssMonitor.java
+END
+ReqData.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ruicloud/!svn/ver/2192/trunk/ruirados/src/main/java/com/ruirados/pojo/ReqData.java
+END
+OssUserFlux.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ruicloud/!svn/ver/3882/trunk/ruirados/src/main/java/com/ruirados/pojo/OssUserFlux.java
+END
+UserTypeSource.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ruicloud/!svn/ver/3834/trunk/ruirados/src/main/java/com/ruirados/pojo/UserTypeSource.java
+END
+OssUserDomain.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ruicloud/!svn/ver/2545/trunk/ruirados/src/main/java/com/ruirados/pojo/OssUserDomain.java
+END
+OssCors.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ruicloud/!svn/ver/2522/trunk/ruirados/src/main/java/com/ruirados/pojo/OssCors.java
+END
+OssAcl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/ruicloud/!svn/ver/2074/trunk/ruirados/src/main/java/com/ruirados/pojo/OssAcl.java
+END
+OssArrearage.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/ruicloud/!svn/ver/3547/trunk/ruirados/src/main/java/com/ruirados/pojo/OssArrearage.java
+END
+PandectbigCustomMonitorIndex.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/ruicloud/!svn/ver/3419/trunk/ruirados/src/main/java/com/ruirados/pojo/PandectbigCustomMonitorIndex.java
+END
+OssFlux.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ruicloud/!svn/ver/3971/trunk/ruirados/src/main/java/com/ruirados/pojo/OssFlux.java
+END
+PandectCustomMonitorIndex.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/ruicloud/!svn/ver/3419/trunk/ruirados/src/main/java/com/ruirados/pojo/PandectCustomMonitorIndex.java
+END
+PageNum.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ruicloud/!svn/ver/2329/trunk/ruirados/src/main/java/com/ruirados/pojo/PageNum.java
+END
+Dictionary.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ruicloud/!svn/ver/2390/trunk/ruirados/src/main/java/com/ruirados/pojo/Dictionary.java
+END
+YrComper.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ruicloud/!svn/ver/2062/trunk/ruirados/src/main/java/com/ruirados/pojo/YrComper.java
+END
+OssStatistics.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ruicloud/!svn/ver/3259/trunk/ruirados/src/main/java/com/ruirados/pojo/OssStatistics.java
+END
+OssOperatelog.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ruicloud/!svn/ver/2030/trunk/ruirados/src/main/java/com/ruirados/pojo/OssOperatelog.java
+END
+OssPicture.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ruicloud/!svn/ver/3773/trunk/ruirados/src/main/java/com/ruirados/pojo/OssPicture.java
+END
+UserCoreAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ruicloud/!svn/ver/3834/trunk/ruirados/src/main/java/com/ruirados/pojo/UserCoreAccess.java
+END
+OssUsedMonitor.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/ruicloud/!svn/ver/2030/trunk/ruirados/src/main/java/com/ruirados/pojo/OssUsedMonitor.java
+END
+Account.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ruicloud/!svn/ver/3699/trunk/ruirados/src/main/java/com/ruirados/pojo/Account.java
+END
+CustomMonitorIndex.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ruicloud/!svn/ver/3259/trunk/ruirados/src/main/java/com/ruirados/pojo/CustomMonitorIndex.java
+END
+OssSyslog.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/ruicloud/!svn/ver/2030/trunk/ruirados/src/main/java/com/ruirados/pojo/OssSyslog.java
+END
+Test1.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/ruicloud/!svn/ver/3259/trunk/ruirados/src/main/java/com/ruirados/pojo/Test1.java
+END
+OssActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ruicloud/!svn/ver/3971/trunk/ruirados/src/main/java/com/ruirados/pojo/OssActivity.java
+END
+OssZone.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ruicloud/!svn/ver/3155/trunk/ruirados/src/main/java/com/ruirados/pojo/OssZone.java
+END
+OssPrice.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ruicloud/!svn/ver/3547/trunk/ruirados/src/main/java/com/ruirados/pojo/OssPrice.java
+END
+OssBucket.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/ruicloud/!svn/ver/3495/trunk/ruirados/src/main/java/com/ruirados/pojo/OssBucket.java
+END
+RspData.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/ruicloud/!svn/ver/2192/trunk/ruirados/src/main/java/com/ruirados/pojo/RspData.java
+END
+UserAuth.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ruicloud/!svn/ver/2014/trunk/ruirados/src/main/java/com/ruirados/pojo/UserAuth.java
+END
+Getfreevminformation.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ruicloud/!svn/ver/2562/trunk/ruirados/src/main/java/com/ruirados/pojo/Getfreevminformation.java
+END
+MonitorL.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/ruicloud/!svn/ver/3332/trunk/ruirados/src/main/java/com/ruirados/pojo/MonitorL.java
+END
+OssFluxPrice.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/ruicloud/!svn/ver/3971/trunk/ruirados/src/main/java/com/ruirados/pojo/OssFluxPrice.java
+END
